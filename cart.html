@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your cart — FoodHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Restaurants</a>
+      <a href="profile.html">Orders</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="nav-cart active" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
+      <a href="profile.html" class="avatar">AM</a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main class="container section-tight">
+  <h2 class="mb-1"><i class="fa-solid fa-cart-shopping" style="color:var(--c-primary);"></i> Your cart</h2>
+  <p class="mb-3 text-muted">Review your order before checking out.</p>
+
+  <div class="cart-layout">
+    <div class="card card-pad" id="cartItemsCard">
+      <div id="cartLines"></div>
+      <div class="empty-state" id="cartEmpty" style="display:none;">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h3>Your cart is empty</h3>
+        <p class="text-muted mb-3">Browse restaurants and add something delicious.</p>
+        <a href="dashboard.html" class="btn btn-primary">Browse restaurants</a>
+      </div>
+    </div>
+
+    <div class="card card-pad" id="summaryCard">
+      <h3 class="mb-2">Order summary</h3>
+      <div class="coupon-row mb-2">
+        <input class="input" id="couponInput" placeholder="Enter coupon code">
+        <button class="btn btn-outline" onclick="applyCoupon()">Apply</button>
+      </div>
+      <p class="text-sm" id="couponMsg"></p>
+
+      <div class="summary-row"><span>Subtotal</span><span class="price" id="sumSubtotal">$0.00</span></div>
+      <div class="summary-row"><span>Delivery fee</span><span class="price" id="sumDelivery">$0.00</span></div>
+      <div class="summary-row"><span>Discount</span><span class="price" id="sumDiscount">-$0.00</span></div>
+      <div class="summary-row total"><span>Total</span><span class="price" id="sumTotal">$0.00</span></div>
+
+      <a href="checkout.html" class="btn btn-primary btn-block btn-lg mt-3" id="checkoutBtn">Proceed to checkout <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="dashboard.html" class="btn btn-ghost btn-block mt-1">Add more items</a>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+let discount = 0;
+
+function renderCart(){
+  const cart = FH.getCart();
+  const linesEl = FH.qs('#cartLines');
+  const emptyEl = FH.qs('#cartEmpty');
+  const summaryCard = FH.qs('#summaryCard');
+
+  if(cart.length === 0){
+    linesEl.style.display = 'none'; emptyEl.style.display = 'block'; summaryCard.style.display='none';
+    return;
+  }
+  linesEl.style.display = 'block'; emptyEl.style.display = 'none'; summaryCard.style.display='block';
+
+  linesEl.innerHTML = cart.map(item => `
+    <div class="cart-line">
+      <img src="${item.img}" alt="${item.name}">
+      <div class="cart-line-info">
+        <h4>${item.name}</h4>
+        <div class="sub">${item.restaurant || ''}</div>
+      </div>
+      <span class="price">${FH.fmt(item.price * item.qty)}</span>
+      <div class="qty-stepper">
+        <button onclick="changeQty('${item.id}', ${item.qty - 1})">−</button>
+        <span>${item.qty}</span>
+        <button onclick="changeQty('${item.id}', ${item.qty + 1})">+</button>
+      </div>
+      <button class="icon-btn danger" aria-label="Remove" onclick="FH.removeFromCart('${item.id}'); renderCart();"><i class="fa-solid fa-trash"></i></button>
+    </div>`).join('');
+
+  const subtotal = FH.cartSubtotal();
+  const deliveryFee = subtotal > 0 ? 2.50 : 0;
+  const total = Math.max(subtotal + deliveryFee - discount, 0);
+  FH.qs('#sumSubtotal').textContent = FH.fmt(subtotal);
+  FH.qs('#sumDelivery').textContent = FH.fmt(deliveryFee);
+  FH.qs('#sumDiscount').textContent = '-' + FH.fmt(discount);
+  FH.qs('#sumTotal').textContent = FH.fmt(total);
+
+  localStorage.setItem('fh_order_total', total.toFixed(2));
+}
+
+function changeQty(id, qty){ FH.updateCartQty(id, qty); renderCart(); }
+
+function applyCoupon(){
+  const code = FH.qs('#couponInput').value.trim().toUpperCase();
+  const subtotal = FH.cartSubtotal();
+  if(code === 'WELCOME30'){
+    discount = +(subtotal * 0.3).toFixed(2);
+    FH.qs('#couponMsg').innerHTML = '<span style="color:var(--c-success); font-weight:600;"><i class="fa-solid fa-circle-check"></i> 30% discount applied!</span>';
+    FH.toast('Coupon applied successfully', 'success', 'fa-tag');
+  } else if(code === ''){
+    FH.qs('#couponMsg').textContent = '';
+  } else {
+    discount = 0;
+    FH.qs('#couponMsg').innerHTML = '<span style="color:var(--c-danger); font-weight:600;"><i class="fa-solid fa-circle-xmark"></i> Invalid or expired coupon</span>';
+  }
+  renderCart();
+}
+
+renderCart();
+</script>
+</body>
+</html>

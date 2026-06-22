@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin dashboard — FoodHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="sidebar">
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub <span class="badge badge-dark" style="margin-left:4px;">Admin</span></a>
+    <div class="dash-nav-label">Overview</div>
+    <a class="dash-link active" href="#analytics" onclick="showSection('analytics', this)"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+    <div class="dash-nav-label">Platform</div>
+    <a class="dash-link" href="#users" onclick="showSection('users', this)"><i class="fa-solid fa-users"></i> Users</a>
+    <a class="dash-link" href="#restaurants" onclick="showSection('restaurants', this)"><i class="fa-solid fa-store"></i> Restaurants</a>
+    <a class="dash-link" href="#orders" onclick="showSection('orders', this)"><i class="fa-solid fa-receipt"></i> Orders</a>
+    <div class="dash-nav-label">System</div>
+    <a class="dash-link" href="#settings" onclick="showSection('settings', this)"><i class="fa-solid fa-gear"></i> Settings</a>
+    <div class="dash-sidebar-foot">
+      <a class="dash-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+    </div>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-topbar">
+      <button class="sidebar-toggle btn-icon btn-ghost" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+      <div class="input-icon-wrap"><i class="fa-solid fa-magnifying-glass"></i><input class="input" placeholder="Search users, restaurants, orders..."></div>
+      <div class="flex items-center gap-2" style="margin-left:auto;">
+        <button class="icon-btn" style="width:42px;height:42px;border-radius:50%;" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+        <div class="avatar" style="background:var(--c-primary);">SA</div>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <!-- ANALYTICS -->
+      <section id="sec-analytics">
+        <div class="dash-page-head"><div><h2>Platform analytics</h2><p class="text-muted">A high-level view of how FoodHub is performing.</p></div>
+          <select class="input" style="width:160px;"><option>Last 7 days</option><option>Last 30 days</option><option>This year</option></select>
+        </div>
+
+        <div class="grid grid-4 mb-3">
+          <div class="stat-card"><div class="stat-card-top"><div class="stat-ic orange"><i class="fa-solid fa-receipt"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 18%</span></div><div class="stat-value">12,480</div><div class="stat-label">Total orders</div></div>
+          <div class="stat-card"><div class="stat-card-top"><div class="stat-ic green"><i class="fa-solid fa-sack-dollar"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 11%</span></div><div class="stat-value">$184K</div><div class="stat-label">Gross revenue</div></div>
+          <div class="stat-card"><div class="stat-card-top"><div class="stat-ic blue"><i class="fa-solid fa-store"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 4%</span></div><div class="stat-value">386</div><div class="stat-label">Active restaurants</div></div>
+          <div class="stat-card"><div class="stat-card-top"><div class="stat-ic yellow"><i class="fa-solid fa-users"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 9%</span></div><div class="stat-value">28,910</div><div class="stat-label">Registered customers</div></div>
+        </div>
+
+        <div class="grid" style="grid-template-columns:1.6fr 1fr; gap:24px;">
+          <div class="chart-card">
+            <div class="chart-head"><h4>Orders — last 7 days</h4><span class="badge badge-success">+18% vs last week</span></div>
+            <div class="bar-chart">
+              <div class="bar-col"><div class="bar" style="height:48%;"></div><span class="bar-label">Mon</span></div>
+              <div class="bar-col"><div class="bar" style="height:62%;"></div><span class="bar-label">Tue</span></div>
+              <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-label">Wed</span></div>
+              <div class="bar-col"><div class="bar" style="height:71%;"></div><span class="bar-label">Thu</span></div>
+              <div class="bar-col"><div class="bar" style="height:84%;"></div><span class="bar-label">Fri</span></div>
+              <div class="bar-col"><div class="bar active" style="height:100%;"></div><span class="bar-label">Sat</span></div>
+              <div class="bar-col"><div class="bar" style="height:90%;"></div><span class="bar-label">Sun</span></div>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-head"><h4>Orders by city</h4></div>
+            <ul class="donut-legend">
+              <li><span class="sw" style="background:var(--c-primary);"></span> Cairo — 41%</li>
+              <li><span class="sw" style="background:var(--c-dark);"></span> Riyadh — 29%</li>
+              <li><span class="sw" style="background:var(--c-gray-300);"></span> Giza — 18%</li>
+              <li><span class="sw" style="background:var(--c-gray-200);"></span> Other — 12%</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section id="sec-users" style="display:none;">
+        <div class="dash-page-head"><div><h2>Manage users</h2><p class="text-muted">View and manage customer and owner accounts.</p></div><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add user</button></div>
+        <div class="tabs mb-3"><button class="tab-btn active">All</button><button class="tab-btn">Customers</button><button class="tab-btn">Restaurant owners</button><button class="tab-btn">Suspended</button></div>
+        <div class="card table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th>Status</th><th></th></tr></thead>
+            <tbody id="userRows"></tbody>
+          </table>
+        </div>
+        <div class="pagination"><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button></div>
+      </section>
+
+      <!-- RESTAURANTS -->
+      <section id="sec-restaurants" style="display:none;">
+        <div class="dash-page-head"><div><h2>Manage restaurants</h2><p class="text-muted">Approve, suspend, or edit restaurant listings.</p></div><button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add restaurant</button></div>
+        <div class="card table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Restaurant</th><th>Owner</th><th>Cuisine</th><th>Rating</th><th>Status</th><th></th></tr></thead>
+            <tbody id="restaurantRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section id="sec-orders" style="display:none;">
+        <div class="dash-page-head"><div><h2>All platform orders</h2><p class="text-muted">Monitor and intervene in orders across every restaurant.</p></div></div>
+        <div class="card table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Restaurant</th><th>Total</th><th>Status</th><th></th></tr></thead>
+            <tbody id="adminOrderRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="sec-settings" style="display:none;">
+        <div class="dash-page-head"><div><h2>System settings</h2><p class="text-muted">Global platform configuration.</p></div></div>
+        <div class="card card-pad" style="max-width:640px;">
+          <div class="field"><label>Platform commission (%)</label><input class="input" value="15"></div>
+          <div class="field"><label>Default delivery fee ($)</label><input class="input" value="2.50"></div>
+          <div class="field"><label>Support email</label><input class="input" value="support@foodhub.app"></div>
+          <div class="flex justify-between items-center mt-2 mb-2"><div><strong>New restaurant signups</strong><div class="text-sm text-muted">Allow new restaurants to register</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+          <div class="flex justify-between items-center mb-2"><div><strong>Maintenance mode</strong><div class="text-sm text-muted">Temporarily disable customer ordering</div></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+          <button class="btn btn-primary mt-2">Save settings</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function showSection(name, link){
+  ['analytics','users','restaurants','orders','settings'].forEach(s => FH.qs('#sec-'+s).style.display = (s===name?'block':'none'));
+  FH.qsa('.dash-link').forEach(l => l.classList.remove('active'));
+  link.classList.add('active');
+  FH.qs('#sidebar').classList.remove('open');
+}
+
+const mockUsers = [
+  {name:'Mona Hassan', email:'mona.h@email.com', role:'Customer', joined:'Jan 14, 2026', status:'Active'},
+  {name:'Bella Napoli Pizzeria', email:'owner@bellanapoli.com', role:'Owner', joined:'Nov 02, 2025', status:'Active'},
+  {name:'Yusuf Al-Amin', email:'yusuf.a@email.com', role:'Customer', joined:'Mar 21, 2026', status:'Active'},
+  {name:'Golden Dragon Wok', email:'owner@goldendragon.com', role:'Owner', joined:'Aug 09, 2025', status:'Suspended'},
+  {name:'Sara Naguib', email:'sara.n@email.com', role:'Customer', joined:'May 30, 2026', status:'Active'},
+];
+const statusBadgeAdmin = (s) => s === 'Active' ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Suspended</span>';
+const roleBadge = (r) => r === 'Owner' ? '<span class="badge badge-info">Owner</span>' : '<span class="badge badge-dark">Customer</span>';
+
+FH.qs('#userRows').innerHTML = mockUsers.map(u => `
+  <tr>
+    <td><div class="row-item"><div class="avatar" style="width:32px;height:32px;font-size:12px;">${u.name.split(' ').map(n=>n[0]).join('').slice(0,2)}</div><span>${u.name}</span></div></td>
+    <td>${u.email}</td><td>${roleBadge(u.role)}</td><td>${u.joined}</td><td>${statusBadgeAdmin(u.status)}</td>
+    <td><div class="table-actions"><button class="icon-btn" aria-label="View"><i class="fa-solid fa-eye"></i></button><button class="icon-btn danger" aria-label="Suspend"><i class="fa-solid fa-ban"></i></button></div></td>
+  </tr>`).join('');
+
+FH.qs('#restaurantRows').innerHTML = FH_DATA.restaurants.map(r => `
+  <tr>
+    <td><div class="row-item"><img class="row-thumb" src="${r.logo}" alt="${r.name}"><span>${r.name}</span></div></td>
+    <td>owner@${r.id}.com</td><td>${r.cuisine}</td><td>${FH.renderStars(r.rating)}</td>
+    <td>${r.isOpen ? '<span class="badge badge-success">Approved</span>' : '<span class="badge badge-warning">Pending review</span>'}</td>
+    <td><div class="table-actions"><button class="icon-btn" aria-label="View"><i class="fa-solid fa-eye"></i></button><button class="icon-btn" aria-label="Edit"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="Remove"><i class="fa-solid fa-trash"></i></button></div></td>
+  </tr>`).join('');
+
+const mockAdminOrders = [
+  {id:'#FH-10523', customer:'Mona Hassan', restaurant:'Bella Napoli Pizzeria', total:24.50, status:'Preparing'},
+  {id:'#FH-10522', customer:'Tariq Saeed', restaurant:'Smokehouse Burger Co.', total:16.00, status:'On the way'},
+  {id:'#FH-10521', customer:'Lina Fathy', restaurant:'Sakura Sushi House', total:38.20, status:'Delivered'},
+  {id:'#FH-10520', customer:'Omar Said', restaurant:'Al Rawda Damascus Kitchen', total:9.50, status:'Cancelled'},
+];
+const adminStatusBadge = (s) => ({
+  'Preparing':'<span class="badge badge-warning">Preparing</span>',
+  'On the way':'<span class="badge badge-info">On the way</span>',
+  'Delivered':'<span class="badge badge-success">Delivered</span>',
+  'Cancelled':'<span class="badge badge-danger">Cancelled</span>',
+})[s];
+FH.qs('#adminOrderRows').innerHTML = mockAdminOrders.map(o => `
+  <tr><td class="price">${o.id}</td><td>${o.customer}</td><td>${o.restaurant}</td><td class="price">${FH.fmt(o.total)}</td><td>${adminStatusBadge(o.status)}</td>
+  <td><div class="table-actions"><button class="icon-btn" aria-label="View"><i class="fa-solid fa-eye"></i></button></div></td></tr>`).join('');
+</script>
+</body>
+</html>

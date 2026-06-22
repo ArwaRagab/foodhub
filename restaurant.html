@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant — FoodHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" class="active">Restaurants</a>
+      <a href="profile.html">Orders</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="nav-cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
+      <a href="profile.html" class="avatar">AM</a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="r-hero"><img id="heroImg" src="" alt="Restaurant banner"></div>
+
+<main class="container" style="padding-bottom:60px;">
+
+  <div class="r-info-card">
+    <img class="r-logo" id="logoImg" src="" alt="Restaurant logo">
+    <div class="r-info-meta">
+      <div class="flex items-center gap-2" style="flex-wrap:wrap;">
+        <h2 id="rName">—</h2>
+        <span class="badge badge-success" id="openBadge">Open now</span>
+      </div>
+      <p id="rCuisine" class="text-muted mt-1">—</p>
+      <div class="r-card-meta mt-1">
+        <span class="rating-pill" id="rRating"></span>
+        <span><i class="fa-regular fa-clock"></i> <span id="rTime"></span></span>
+        <span><i class="fa-solid fa-motorcycle"></i> <span id="rFee"></span> delivery</span>
+        <span><i class="fa-solid fa-tag"></i> Min order <span id="rMin"></span></span>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <button class="btn btn-outline btn-icon" id="favBtn" aria-label="Save to favorites"><i class="fa-regular fa-heart"></i></button>
+      <button class="btn btn-outline" data-open-modal="#reviewsModal"><i class="fa-solid fa-comment"></i> Reviews</button>
+    </div>
+  </div>
+
+  <div class="tabs mt-4" id="menuTabs"></div>
+
+  <div id="menuList" class="mt-2"></div>
+
+</main>
+
+<!-- Sticky cart bar -->
+<div id="cartBar" style="display:none; position:fixed; bottom:0; left:0; right:0; background:var(--c-dark); color:white; padding:16px 24px; z-index:90; box-shadow:0 -8px 24px rgba(0,0,0,0.18);">
+  <div class="container flex justify-between items-center">
+    <span><strong id="cartBarCount">0</strong> item(s) · <span class="price" id="cartBarTotal">$0.00</span></span>
+    <a href="cart.html" class="btn btn-primary">View cart <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- Reviews modal -->
+<div class="modal-overlay" id="reviewsModal">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-head"><h3>Customer reviews</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="flex-col gap-2" id="modalReviews"></div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const rid = params.get('id') || 'r1';
+const r = FH_DATA.getRestaurant(rid) || FH_DATA.restaurants[0];
+
+FH.qs('#heroImg').src = r.image; FH.qs('#heroImg').alt = r.name;
+FH.qs('#logoImg').src = r.logo;
+FH.qs('#rName').textContent = r.name;
+FH.qs('#rCuisine').textContent = r.cuisine;
+FH.qs('#rRating').innerHTML = FH.renderStars(r.rating) + ` (${r.reviewsCount})`;
+FH.qs('#rTime').textContent = r.deliveryTime;
+FH.qs('#rFee').textContent = r.deliveryFee === 0 ? 'Free' : FH.fmt(r.deliveryFee);
+FH.qs('#rMin').textContent = FH.fmt(r.minOrder);
+FH.qs('#openBadge').outerHTML = r.isOpen ? '<span class="badge badge-success" id="openBadge"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Open now</span>' : '<span class="badge badge-danger" id="openBadge">Closed</span>';
+
+const favBtn = FH.qs('#favBtn');
+function refreshFav(){
+  const active = FH.isFavorite(r.id);
+  favBtn.innerHTML = active ? '<i class="fa-solid fa-heart" style="color:var(--c-primary);"></i>' : '<i class="fa-regular fa-heart"></i>';
+}
+favBtn.addEventListener('click', () => { FH.toggleFavorite(r.id); refreshFav(); });
+refreshFav();
+
+const menu = FH_DATA.getMenu(r.id);
+let activeTab = menu.tabs[0];
+
+FH.qs('#menuTabs').innerHTML = menu.tabs.map(t => `<button class="tab-btn ${t===activeTab?'active':''}" data-tab="${t}">${t}</button>`).join('');
+
+function renderMenu(){
+  const items = menu.items.filter(i => i.tab === activeTab);
+  FH.qs('#menuList').innerHTML = items.map(item => `
+    <div class="menu-item-row">
+      <img class="menu-item-img" src="${item.img}" alt="${item.name}">
+      <div class="menu-item-info">
+        <h4>${item.name}</h4>
+        <p>${item.desc}</p>
+        <div class="menu-item-foot">
+          <span class="price">${FH.fmt(item.price)}</span>
+          <button class="btn btn-primary btn-sm" onclick='FH.addToCart({id:"${item.id}",name:${JSON.stringify(item.name)},price:${item.price},img:${JSON.stringify(item.img)},restaurant:${JSON.stringify(r.name)}}); updateCartBar();'>
+            <i class="fa-solid fa-plus"></i> Add
+          </button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+renderMenu();
+
+FH.qsa('.tab-btn').forEach(btn => btn.addEventListener('click', () => {
+  FH.qsa('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeTab = btn.dataset.tab;
+  renderMenu();
+}));
+
+function updateCartBar(){
+  const count = FH.cartCount();
+  const bar = FH.qs('#cartBar');
+  bar.style.display = count > 0 ? 'block' : 'none';
+  FH.qs('#cartBarCount').textContent = count;
+  FH.qs('#cartBarTotal').textContent = FH.fmt(FH.cartSubtotal());
+}
+updateCartBar();
+
+// reviews modal mock content
+FH.qs('#modalReviews').innerHTML = FH_DATA.reviews.map(rv => `
+  <div class="review-card" style="padding:16px;">
+    <div class="review-stars">${'<i class="fa-solid fa-star"></i>'.repeat(rv.rating)}</div>
+    <p class="text-sm">"${rv.text}"</p>
+    <div class="review-person"><div class="avatar" style="width:32px;height:32px;font-size:12px;">${rv.name.split(' ').map(n=>n[0]).join('')}</div><strong class="text-sm">${rv.name}</strong></div>
+  </div>`).join('');
+</script>
+</body>
+</html>

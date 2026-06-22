@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse restaurants — FoodHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" class="active">Restaurants</a>
+      <a href="profile.html">Orders</a>
+      <a href="profile.html#favorites">Favorites</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="nav-cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
+      <a href="profile.html" class="avatar">AM</a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main class="container section-tight">
+
+  <div class="card card-pad mb-3" style="display:flex; gap:14px; flex-wrap:wrap;">
+    <div class="input-icon-wrap" style="flex:2; min-width:220px;">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="input" id="searchInput" type="text" placeholder="Search restaurants or cuisines...">
+    </div>
+    <div class="input-icon-wrap" style="flex:1; min-width:160px;">
+      <i class="fa-solid fa-location-dot"></i>
+      <input class="input" type="text" value="Dokki, Giza" placeholder="Delivery address">
+    </div>
+    <select class="input" id="sortSelect" style="flex:0 0 200px;">
+      <option value="recommended">Sort: Recommended</option>
+      <option value="rating">Sort: Top rated</option>
+      <option value="time">Sort: Fastest delivery</option>
+      <option value="fee">Sort: Lowest delivery fee</option>
+    </select>
+  </div>
+
+  <div class="flex gap-2 mb-3" style="overflow-x:auto;">
+    <button class="filter-chip active" data-cat="all">All</button>
+    <button class="filter-chip" data-cat="open">Open now</button>
+    <button class="filter-chip" data-cat="promo">Offers</button>
+    <button class="filter-chip" data-cat="pizza">Pizza</button>
+    <button class="filter-chip" data-cat="burgers">Burgers</button>
+    <button class="filter-chip" data-cat="sushi">Sushi</button>
+    <button class="filter-chip" data-cat="arabic">Arabic</button>
+    <button class="filter-chip" data-cat="healthy">Healthy</button>
+    <button class="filter-chip" data-cat="asian">Asian</button>
+    <button class="filter-chip" data-cat="desserts">Desserts</button>
+  </div>
+
+  <div class="section-head">
+    <div><h2 id="resultsTitle">All restaurants</h2><p id="resultsCount" class="text-muted"></p></div>
+  </div>
+  <div class="grid grid-4" id="restaurantGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <i class="fa-regular fa-face-frown"></i>
+    <h3>No restaurants match your search</h3>
+    <p class="text-muted">Try a different keyword or clear your filters.</p>
+  </div>
+
+  <section class="section-tight" id="favorites">
+    <div class="section-head"><div><h2>Your favorites</h2><p class="text-muted">Restaurants you've saved for quick reordering.</p></div></div>
+    <div class="grid grid-4" id="favGrid"></div>
+    <p class="text-muted" id="noFavMsg" style="display:none;">You haven't saved any favorites yet — tap the heart icon on a restaurant to add one.</p>
+  </section>
+
+  <section class="section-tight">
+    <div class="section-head"><div><h2>Recommended for you</h2><p class="text-muted">Based on your recent orders and cuisine preferences.</p></div></div>
+    <div class="grid grid-4" id="recommendedGrid"></div>
+  </section>
+
+</main>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+let activeCat = 'all';
+let activeQuery = '';
+
+function applyFilters(){
+  let list = [...FH_DATA.restaurants];
+  if(activeCat === 'open') list = list.filter(r => r.isOpen);
+  else if(activeCat === 'promo') list = list.filter(r => !!r.promo);
+  else if(activeCat !== 'all') list = list.filter(r => r.categoryIds.includes(activeCat));
+
+  if(activeQuery){
+    const q = activeQuery.toLowerCase();
+    list = list.filter(r => r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q));
+  }
+
+  const sortBy = FH.qs('#sortSelect').value;
+  if(sortBy === 'rating') list.sort((a,b) => b.rating - a.rating);
+  if(sortBy === 'time') list.sort((a,b) => parseInt(a.deliveryTime) - parseInt(b.deliveryTime));
+  if(sortBy === 'fee') list.sort((a,b) => a.deliveryFee - b.deliveryFee);
+
+  const grid = FH.qs('#restaurantGrid');
+  const empty = FH.qs('#emptyState');
+  grid.innerHTML = list.map(r => FH.restaurantCardHTML(r)).join('');
+  grid.style.display = list.length ? 'grid' : 'none';
+  empty.style.display = list.length ? 'none' : 'block';
+  FH.qs('#resultsCount').textContent = `${list.length} restaurant${list.length !== 1 ? 's' : ''} found`;
+}
+
+FH.qsa('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    FH.qsa('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCat = chip.dataset.cat;
+    applyFilters();
+  });
+});
+FH.qs('#searchInput').addEventListener('input', (e) => { activeQuery = e.target.value; applyFilters(); });
+FH.qs('#sortSelect').addEventListener('change', applyFilters);
+
+// preselect category/search from URL
+const params = new URLSearchParams(window.location.search);
+if(params.get('cat')){
+  activeCat = params.get('cat');
+  const target = FH.qsa('.filter-chip').find(c => c.dataset.cat === activeCat);
+  if(target){ FH.qsa('.filter-chip').forEach(c => c.classList.remove('active')); target.classList.add('active'); }
+}
+if(params.get('q')){ activeQuery = params.get('q'); FH.qs('#searchInput').value = activeQuery; }
+
+applyFilters();
+
+// Favorites
+const favIds = FH.getFavorites();
+const favRestaurants = FH_DATA.restaurants.filter(r => favIds.includes(r.id));
+FH.qs('#favGrid').innerHTML = favRestaurants.map(r => FH.restaurantCardHTML(r)).join('');
+FH.qs('#favGrid').style.display = favRestaurants.length ? 'grid' : 'none';
+FH.qs('#noFavMsg').style.display = favRestaurants.length ? 'none' : 'block';
+
+// Recommended (last 4, simple mock logic)
+FH.qs('#recommendedGrid').innerHTML = FH_DATA.restaurants.slice(-4).map(r => FH.restaurantCardHTML(r)).join('');
+</script>
+</body>
+</html>

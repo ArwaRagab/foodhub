@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodHub — Order Food Online from the Best Restaurants Near You</title>
+<meta name="description" content="Browse restaurants, order your favorite meals, and track delivery in real time with FoodHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="dashboard.html">Restaurants</a>
+      <a href="index.html#offers">Offers</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#footer">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="nav-cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
+      <a href="login.html" class="btn btn-outline btn-sm">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Sign up</a>
+      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><i class="fa-solid fa-bolt"></i> Delivery in 25 minutes or less</span>
+        <h1>Craving something good?<br>We've got <span class="hl">your order</span> covered.</h1>
+        <p class="lead">Order from over 1,200 restaurants near you — track your rider live and get hot food at your door, every time.</p>
+        <form class="hero-search" onsubmit="event.preventDefault(); window.location.href='dashboard.html?q='+encodeURIComponent(this.q.value);">
+          <i class="fa-solid fa-location-dot" style="align-self:center;margin-left:10px;color:var(--c-gray-500);"></i>
+          <input type="text" name="q" placeholder="Search restaurants, cuisines or dishes...">
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Find food</button>
+        </form>
+        <div class="hero-stats">
+          <div><b>1,200+</b><span>Restaurants</span></div>
+          <div><b>4.8</b><span>Average rating</span></div>
+          <div><b>30 min</b><span>Avg. delivery</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img class="plate" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" alt="Fresh pizza ready for delivery">
+        <div class="float-card fc-1"><span class="dot-ic" style="background:var(--c-success);"><i class="fa-solid fa-check"></i></span> Order confirmed</div>
+        <div class="float-card fc-2"><span class="dot-ic" style="background:var(--c-primary);"><i class="fa-solid fa-motorcycle"></i></span> Rider 6 min away</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head"><div><h2>Order by craving</h2><p>Jump straight to the cuisine you're in the mood for.</p></div></div>
+      <div class="chip-row" id="categoryRow"></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED RESTAURANTS ============ -->
+  <section class="section-tight" id="featured">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Featured restaurants</h2><p>Popular picks from people ordering near you right now.</p></div>
+        <a href="dashboard.html" class="btn btn-outline">View all <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="grid grid-4" id="featuredRow"></div>
+    </div>
+  </section>
+
+  <!-- ============ PROMO BANNER ============ -->
+  <section class="section-tight" id="offers">
+    <div class="container">
+      <div class="promo-banner">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,0.12); color:white;">Limited time</span>
+          <h2>Get 30% off your first 3 orders</h2>
+          <p>New to FoodHub? Use the code below at checkout on any order over $10.</p>
+          <div class="promo-code"><i class="fa-solid fa-tag"></i> WELCOME30</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=420&q=80" alt="Promotional burger meal" style="width:240px;border-radius:20px;box-shadow:var(--sh-lg);">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section-tight" id="about">
+    <div class="container">
+      <div class="section-head"><div><h2>Loved by hungry people everywhere</h2><p>A few words from customers who order with FoodHub every week.</p></div></div>
+      <div class="grid grid-3" id="reviewsRow"></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA: BECOME A PARTNER ============ -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="card card-pad" style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div>
+          <h3>Own a restaurant?</h3>
+          <p class="mt-1">Partner with FoodHub to reach thousands of new customers in your city.</p>
+        </div>
+        <a href="register.html?role=owner" class="btn btn-dark">Become a partner <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</div>
+        <p>Your favorite restaurants, delivered fast. Order in a tap, track every step, enjoy every bite.</p>
+        <div class="social-row">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#">About us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Press</a></li></ul>
+      </div>
+      <div>
+        <h4>For Restaurants</h4>
+        <ul><li><a href="register.html?role=owner">Partner with us</a></li><li><a href="owner-dashboard.html">Owner dashboard</a></li><li><a href="#">Pricing</a></li><li><a href="#">Resources</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i> +20 100 123 4567</li>
+          <li><i class="fa-solid fa-envelope"></i> support@foodhub.app</li>
+          <li><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FoodHub. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  // Categories
+  FH.qs('#categoryRow').innerHTML = FH_DATA.categories.map(c => `
+    <a href="dashboard.html?cat=${c.id}" class="cat-chip">
+      <div class="cat-chip-ic"><i class="fa-solid ${c.icon}"></i></div>
+      <span>${c.name}</span>
+    </a>`).join('');
+
+  // Featured restaurants (first 4)
+  FH.qs('#featuredRow').innerHTML = FH_DATA.restaurants.slice(0,4).map(r => FH.restaurantCardHTML(r)).join('');
+
+  // Reviews
+  FH.qs('#reviewsRow').innerHTML = FH_DATA.reviews.map(rv => `
+    <div class="review-card">
+      <div class="review-stars">${'<i class="fa-solid fa-star"></i>'.repeat(rv.rating)}${'<i class="fa-regular fa-star"></i>'.repeat(5-rv.rating)}</div>
+      <p>"${rv.text}"</p>
+      <div class="review-person">
+        <div class="avatar">${rv.name.split(' ').map(n=>n[0]).join('')}</div>
+        <div><strong style="display:block;font-size:14px;">${rv.name}</strong><span class="text-sm text-muted">${rv.role}</span></div>
+      </div>
+    </div>`).join('');
+</script>
+</body>
+</html>

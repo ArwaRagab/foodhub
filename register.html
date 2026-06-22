@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create an account — FoodHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="auth-shell">
+
+  <aside class="auth-aside">
+    <a href="index.html" class="brand" style="color:white;"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <div>
+      <h2 style="color:white; margin-bottom:14px;">Join thousands<br>ordering smarter.</h2>
+      <p style="color:var(--c-gray-300); max-width:340px;">Create a free account as a customer, or register your restaurant to start receiving orders today.</p>
+    </div>
+    <p style="color:var(--c-gray-500); font-size:13px;">© 2026 FoodHub. All rights reserved.</p>
+  </aside>
+
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <h2 class="mb-1">Create your account</h2>
+      <p class="mb-3">Choose how you'd like to use FoodHub.</p>
+
+      <div class="role-select" id="roleSelect">
+        <button type="button" class="role-opt active" data-role="customer" onclick="selectRole(this,'customer')">
+          <i class="fa-solid fa-user"></i><span>Customer</span><small>Order food from restaurants</small>
+        </button>
+        <button type="button" class="role-opt" data-role="owner" onclick="selectRole(this,'owner')">
+          <i class="fa-solid fa-store"></i><span>Restaurant Owner</span><small>Manage menus & orders</small>
+        </button>
+      </div>
+
+      <form id="registerForm" onsubmit="handleRegister(event)">
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input class="input" type="text" id="fullName" placeholder="Arwa Mostafa" required>
+        </div>
+        <div class="field" id="restaurantNameField" style="display:none;">
+          <label for="restName">Restaurant name</label>
+          <input class="input" type="text" id="restName" placeholder="e.g. Clean Tank Kitchen">
+        </div>
+        <div class="field">
+          <label for="regEmail">Email address</label>
+          <input class="input" type="email" id="regEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="regPhone">Phone number</label>
+          <input class="input" type="tel" id="regPhone" placeholder="+20 100 123 4567" required>
+        </div>
+        <div class="field">
+          <label for="regPassword">Password</label>
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-lock"></i>
+            <input class="input" type="password" id="regPassword" placeholder="Min. 8 characters" required minlength="8">
+            <button type="button" class="toggle-pass" onclick="togglePass(this)"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+        <label class="checkbox-row mb-3"><input type="checkbox" required> I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Create customer account</button>
+      </form>
+
+      <p class="text-center mt-3 text-sm">Already have an account? <a href="login.html" class="link">Log in</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+let currentRole = 'customer';
+function selectRole(btn, role){
+  currentRole = role;
+  FH.qsa('.role-opt').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  FH.qs('#restaurantNameField').style.display = role === 'owner' ? 'block' : 'none';
+  FH.qs('#submitBtn').textContent = role === 'owner' ? 'Create restaurant account' : 'Create customer account';
+}
+// preselect via ?role=owner
+const params = new URLSearchParams(window.location.search);
+if(params.get('role') === 'owner'){ selectRole(FH.qsa('.role-opt')[1], 'owner'); }
+
+function togglePass(btn){
+  const input = btn.previousElementSibling;
+  const isPass = input.type === 'password';
+  input.type = isPass ? 'text' : 'password';
+  btn.innerHTML = isPass ? '<i class="fa-regular fa-eye-slash"></i>' : '<i class="fa-regular fa-eye"></i>';
+}
+function handleRegister(e){
+  e.preventDefault();
+  FH.toast('Account created successfully', 'success', 'fa-circle-check');
+  setTimeout(()=> window.location.href = currentRole === 'owner' ? 'owner-dashboard.html' : 'dashboard.html', 700);
+}
+</script>
+</body>
+</html>
