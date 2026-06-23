@@ -1,5 +1,5 @@
 /* =========================================================
-   FoodHub — Shared App Logic
+   وجبة — منطق التطبيق المشترك (عربي)
    ========================================================= */
 
 const FH = (() => {
@@ -7,14 +7,14 @@ const FH = (() => {
   const CART_KEY = 'fh_cart';
   const FAV_KEY  = 'fh_favorites';
 
-  /* ---------- helpers ---------- */
+  /* ---------- أدوات مساعدة ---------- */
   const qs  = (sel, ctx=document) => ctx.querySelector(sel);
   const qsa = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-  const fmt = (n) => `$${Number(n).toFixed(2)}`;
+  const fmt = (n) => `${Number(n).toFixed(2)} ج.م`;
   const load = (key, fallback) => { try{ return JSON.parse(localStorage.getItem(key)) ?? fallback; }catch(e){ return fallback; } };
   const save = (key, val) => localStorage.setItem(key, JSON.stringify(val));
 
-  /* ---------- toast ---------- */
+  /* ---------- إشعارات Toast ---------- */
   function toast(message, type='default', icon='fa-circle-check'){
     let wrap = qs('.toast-wrap');
     if(!wrap){ wrap = document.createElement('div'); wrap.className='toast-wrap'; document.body.appendChild(wrap); }
@@ -22,10 +22,10 @@ const FH = (() => {
     el.className = `toast ${type}`;
     el.innerHTML = `<i class="fa-solid ${icon}"></i><span>${message}</span>`;
     wrap.appendChild(el);
-    setTimeout(()=>{ el.style.opacity='0'; el.style.transform='translateX(20px)'; el.style.transition='all .25s'; setTimeout(()=>el.remove(),250); }, 2600);
+    setTimeout(()=>{ el.style.opacity='0'; el.style.transform='translateY(-10px)'; el.style.transition='all .25s'; setTimeout(()=>el.remove(),250); }, 2600);
   }
 
-  /* ---------- navbar ---------- */
+  /* ---------- شريط التنقل ---------- */
   function initNavbar(){
     const toggle = qs('.nav-toggle');
     const links = qs('.nav-links');
@@ -38,7 +38,7 @@ const FH = (() => {
     updateCartBadge();
   }
 
-  /* ---------- sidebar (dashboards) ---------- */
+  /* ---------- القائمة الجانبية (لوحات التحكم) ---------- */
   function initSidebar(){
     const toggle = qs('.sidebar-toggle');
     const sidebar = qs('.dash-sidebar');
@@ -47,7 +47,7 @@ const FH = (() => {
     }
   }
 
-  /* ---------- modal ---------- */
+  /* ---------- النوافذ المنبثقة ---------- */
   function initModals(){
     qsa('[data-open-modal]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -63,7 +63,7 @@ const FH = (() => {
     });
   }
 
-  /* ---------- cart ---------- */
+  /* ---------- سلة المشتريات ---------- */
   function getCart(){ return load(CART_KEY, []); }
   function setCart(items){ save(CART_KEY, items); updateCartBadge(); }
 
@@ -73,7 +73,7 @@ const FH = (() => {
     if(existing){ existing.qty += (item.qty || 1); }
     else { cart.push({ ...item, qty: item.qty || 1 }); }
     setCart(cart);
-    toast(`${item.name} added to cart`, 'success', 'fa-cart-plus');
+    toast(`تمت إضافة ${item.name} إلى السلة`, 'success', 'fa-cart-plus');
   }
 
   function updateCartQty(id, qty){
@@ -85,7 +85,7 @@ const FH = (() => {
 
   function removeFromCart(id){
     setCart(getCart().filter(c => c.id !== id));
-    toast('Item removed from cart', 'default', 'fa-trash');
+    toast('تم حذف العنصر من السلة', 'default', 'fa-trash');
   }
 
   function clearCart(){ setCart([]); }
@@ -101,19 +101,19 @@ const FH = (() => {
     });
   }
 
-  /* ---------- favorites ---------- */
+  /* ---------- المفضلة ---------- */
   function getFavorites(){ return load(FAV_KEY, []); }
   function toggleFavorite(id){
     let favs = getFavorites();
     const has = favs.includes(id);
     favs = has ? favs.filter(f => f !== id) : [...favs, id];
     save(FAV_KEY, favs);
-    toast(has ? 'Removed from favorites' : 'Added to favorites', has ? 'default' : 'success', has ? 'fa-heart-crack' : 'fa-heart');
+    toast(has ? 'تمت الإزالة من المفضلة' : 'تمت الإضافة إلى المفضلة', has ? 'default' : 'success', has ? 'fa-heart-crack' : 'fa-heart');
     return !has;
   }
   function isFavorite(id){ return getFavorites().includes(id); }
 
-  /* ---------- render helpers ---------- */
+  /* ---------- دوال العرض ---------- */
   function renderStars(rating){
     return `<i class="fa-solid fa-star"></i> ${rating.toFixed(1)}`;
   }
@@ -122,12 +122,12 @@ const FH = (() => {
     const fav = isFavorite(r.id);
     return `
     <div class="r-card" data-rid="${r.id}">
-      <a href="restaurant.html?id=${r.id}" class="r-card-img" aria-label="View ${r.name}">
+      <a href="restaurant.html?id=${r.id}" class="r-card-img" aria-label="عرض ${r.name}">
         <img src="${r.image}" alt="${r.name}" loading="lazy">
         ${r.promo ? `<span class="r-card-badge promo"><i class="fa-solid fa-bolt"></i> ${r.promo}</span>` : ''}
-        ${!r.isOpen ? `<div class="closed-overlay">Closed</div>` : ''}
+        ${!r.isOpen ? `<div class="closed-overlay">مغلق الآن</div>` : ''}
       </a>
-      <button class="r-fav-btn ${fav ? 'active':''}" aria-label="Toggle favorite" onclick="FH.handleFavClick(event,'${r.id}')">
+      <button class="r-fav-btn ${fav ? 'active':''}" aria-label="تبديل المفضلة" onclick="FH.handleFavClick(event,'${r.id}')">
         <i class="fa-${fav ? 'solid':'regular'} fa-heart"></i>
       </button>
       <a href="restaurant.html?id=${r.id}" class="r-card-body" style="display:block;">
@@ -140,8 +140,8 @@ const FH = (() => {
         </div>
         <div class="r-card-meta">
           <span><i class="fa-regular fa-clock"></i> ${r.deliveryTime}</span>
-          <span><i class="fa-solid fa-motorcycle"></i> ${r.deliveryFee === 0 ? 'Free' : fmt(r.deliveryFee)}</span>
-          <span><i class="fa-solid fa-tag"></i> Min ${fmt(r.minOrder)}</span>
+          <span><i class="fa-solid fa-motorcycle"></i> ${r.deliveryFee === 0 ? 'توصيل مجاني' : fmt(r.deliveryFee)}</span>
+          <span><i class="fa-solid fa-tag"></i> الحد الأدنى ${fmt(r.minOrder)}</span>
         </div>
       </a>
     </div>`;

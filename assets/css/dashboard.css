@@ -10,7 +10,7 @@
   display:flex; flex-direction:column; gap:6px; overflow-y:auto;
 }
 .dash-sidebar .brand{ color:white; padding:0 10px 24px; }
-.dash-nav-label{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--c-gray-500); padding:18px 12px 8px; }
+.dash-nav-label{ font-size:11.5px; color:var(--c-gray-500); padding:18px 12px 8px; font-weight:600; }
 .dash-link{ display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:var(--r-md); font-size:14px; font-weight:600; color:var(--c-gray-300); transition:var(--transition); }
 .dash-link i{ width:18px; text-align:center; font-size:15px; }
 .dash-link:hover{ background:rgba(255,255,255,0.06); color:white; }
@@ -27,9 +27,11 @@
 
 @media (max-width:980px){
   .dash-shell{ grid-template-columns:1fr; }
-  .dash-sidebar{ position:fixed; left:0; top:0; z-index:200; width:260px; transform:translateX(-100%); transition:var(--transition); }
+  .dash-sidebar{ position:fixed; inset-inline-start:0; top:0; z-index:200; width:260px; transform:translateX(-100%); transition:var(--transition); }
   .dash-sidebar.open{ transform:translateX(0); }
   .sidebar-toggle{ display:flex; }
+  [dir="rtl"] .dash-sidebar{ transform:translateX(100%); }
+  [dir="rtl"] .dash-sidebar.open{ transform:translateX(0); }
 }
 
 /* ---------- Stat cards ---------- */
@@ -48,7 +50,7 @@
 /* ---------- Data tables ---------- */
 .table-wrap{ overflow-x:auto; }
 table.data-table{ width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px; }
-.data-table thead th{ text-align:left; color:var(--c-gray-500); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.04em; padding:0 16px 12px; border-bottom:1px solid var(--c-gray-200); }
+.data-table thead th{ text-align:start; color:var(--c-gray-500); font-weight:600; font-size:12.5px; padding:0 16px 12px; border-bottom:1px solid var(--c-gray-200); }
 .data-table tbody td{ padding:14px 16px; border-bottom:1px solid var(--c-gray-100); vertical-align:middle; }
 .data-table tbody tr:hover{ background:var(--c-gray-50); }
 .row-item{ display:flex; align-items:center; gap:10px; }
@@ -86,10 +88,10 @@ table.data-table{ width:100%; border-collapse:collapse; font-size:13.5px; min-wi
 .r-hero img{ width:100%; height:100%; object-fit:cover; }
 .r-hero::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,0.55) 100%); }
 .r-info-card{ background:white; border-radius:var(--r-lg); box-shadow:var(--sh-lg); margin-top:-64px; position:relative; padding:24px 28px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:flex-end; }
-.r-logo{ width:84px; height:84px; border-radius:var(--r-md); object-fit:cover; border:4px solid white; box-shadow:var(--sh-md); position:absolute; top:-42px; left:28px; background:white; }
-.r-info-meta{ padding-left:104px; }
+.r-logo{ width:84px; height:84px; border-radius:var(--r-md); object-fit:cover; border:4px solid white; box-shadow:var(--sh-md); position:absolute; top:-42px; inset-inline-start:28px; background:white; }
+.r-info-meta{ padding-inline-start:104px; }
 .r-info-meta .r-card-meta{ margin-top:8px; }
-@media (max-width:640px){ .r-logo{ position:static; margin-bottom:10px; } .r-info-meta{ padding-left:0; } .r-info-card{ margin-top:-30px; flex-direction:column; align-items:flex-start; } }
+@media (max-width:640px){ .r-logo{ position:static; margin-bottom:10px; } .r-info-meta{ padding-inline-start:0; } .r-info-card{ margin-top:-30px; flex-direction:column; align-items:flex-start; } }
 
 .menu-item-row{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--c-gray-100); align-items:center; }
 .menu-item-img{ width:96px; height:96px; border-radius:var(--r-md); object-fit:cover; flex-shrink:0; background:var(--c-gray-200); }
@@ -137,11 +139,11 @@ table.data-table{ width:100%; border-collapse:collapse; font-size:13.5px; min-wi
 .track-step span{ font-size:12.5px; font-weight:700; color:var(--c-gray-500); }
 .track-step.done span, .track-step.current span{ color:var(--c-dark); }
 @media (max-width:640px){ .track-timeline{ flex-direction:column; align-items:flex-start; gap:24px; }
-  .track-timeline::before{ left:18px; top:5%; bottom:5%; right:auto; width:3px; height:90%; }
-  .track-step{ flex-direction:row; text-align:left; } }
+  .track-timeline::before{ inset-inline-start:18px; top:5%; bottom:5%; right:auto; width:3px; height:90%; }
+  .track-step{ flex-direction:row; text-align:start; } }
 .map-placeholder{ background:linear-gradient(135deg,var(--c-gray-100) 25%,var(--c-gray-200) 25%,var(--c-gray-200) 50%,var(--c-gray-100) 50%,var(--c-gray-100) 75%,var(--c-gray-200) 75%,var(--c-gray-200) 100%); background-size:28px 28px; border-radius:var(--r-lg); height:280px; display:flex; align-items:center; justify-content:center; color:var(--c-gray-500); font-weight:600; flex-direction:column; gap:10px; border:1px solid var(--c-gray-200); position:relative; overflow:hidden; }
 .map-placeholder i{ font-size:30px; color:var(--c-primary); }
-.map-rider-pin{ position:absolute; width:46px; height:46px; border-radius:50%; background:var(--c-dark); color:white; display:flex; align-items:center; justify-content:center; box-shadow:var(--sh-lg); top:42%; left:55%; animation:pulse 2.2s infinite; }
+.map-rider-pin{ position:absolute; width:46px; height:46px; border-radius:50%; background:var(--c-dark); color:white; display:flex; align-items:center; justify-content:center; box-shadow:var(--sh-lg); top:42%; inset-inline-start:55%; animation:pulse 2.2s infinite; }
 @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.08); } }
 
 /* ---------- Profile ---------- */
@@ -159,6 +161,7 @@ table.data-table{ width:100%; border-collapse:collapse; font-size:13.5px; min-wi
 .switch{ position:relative; width:44px; height:25px; flex-shrink:0; }
 .switch input{ opacity:0; width:0; height:0; }
 .switch .slider{ position:absolute; inset:0; background:var(--c-gray-300); border-radius:var(--r-pill); transition:var(--transition); }
-.switch .slider::before{ content:''; position:absolute; width:19px; height:19px; left:3px; top:3px; background:white; border-radius:50%; transition:var(--transition); }
+.switch .slider::before{ content:''; position:absolute; width:19px; height:19px; inset-inline-start:3px; top:3px; background:white; border-radius:50%; transition:var(--transition); }
 .switch input:checked + .slider{ background:var(--c-primary); }
 .switch input:checked + .slider::before{ transform:translateX(19px); }
+[dir="rtl"] .switch input:checked + .slider::before{ transform:translateX(-19px); }

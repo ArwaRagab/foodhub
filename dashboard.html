@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Browse restaurants — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>تصفح المطاعم — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -13,17 +13,17 @@
 
 <header class="navbar">
   <div class="container">
-    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
     <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="dashboard.html" class="active">Restaurants</a>
-      <a href="profile.html">Orders</a>
-      <a href="profile.html#favorites">Favorites</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="dashboard.html" class="active">المطاعم</a>
+      <a href="profile.html">طلباتي</a>
+      <a href="profile.html#favorites">المفضلة</a>
     </nav>
     <div class="nav-actions">
-      <a href="cart.html" class="nav-cart" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
-      <a href="profile.html" class="avatar">AM</a>
-      <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <a href="cart.html" class="nav-cart" aria-label="السلة"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
+      <a href="profile.html" class="avatar">أم</a>
+      <button class="nav-toggle" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
 </header>
@@ -33,51 +33,51 @@
   <div class="card card-pad mb-3" style="display:flex; gap:14px; flex-wrap:wrap;">
     <div class="input-icon-wrap" style="flex:2; min-width:220px;">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input class="input" id="searchInput" type="text" placeholder="Search restaurants or cuisines...">
+      <input class="input" id="searchInput" type="text" placeholder="دور على مطاعم أو أصناف أكل...">
     </div>
     <div class="input-icon-wrap" style="flex:1; min-width:160px;">
       <i class="fa-solid fa-location-dot"></i>
-      <input class="input" type="text" value="Dokki, Giza" placeholder="Delivery address">
+      <input class="input" type="text" value="الدقي، الجيزة" placeholder="عنوان التوصيل">
     </div>
     <select class="input" id="sortSelect" style="flex:0 0 200px;">
-      <option value="recommended">Sort: Recommended</option>
-      <option value="rating">Sort: Top rated</option>
-      <option value="time">Sort: Fastest delivery</option>
-      <option value="fee">Sort: Lowest delivery fee</option>
+      <option value="recommended">الترتيب: المقترح</option>
+      <option value="rating">الترتيب: الأعلى تقييمًا</option>
+      <option value="time">الترتيب: الأسرع توصيلًا</option>
+      <option value="fee">الترتيب: الأقل رسوم توصيل</option>
     </select>
   </div>
 
   <div class="flex gap-2 mb-3" style="overflow-x:auto;">
-    <button class="filter-chip active" data-cat="all">All</button>
-    <button class="filter-chip" data-cat="open">Open now</button>
-    <button class="filter-chip" data-cat="promo">Offers</button>
-    <button class="filter-chip" data-cat="pizza">Pizza</button>
-    <button class="filter-chip" data-cat="burgers">Burgers</button>
-    <button class="filter-chip" data-cat="sushi">Sushi</button>
-    <button class="filter-chip" data-cat="arabic">Arabic</button>
-    <button class="filter-chip" data-cat="healthy">Healthy</button>
-    <button class="filter-chip" data-cat="asian">Asian</button>
-    <button class="filter-chip" data-cat="desserts">Desserts</button>
+    <button class="filter-chip active" data-cat="all">الكل</button>
+    <button class="filter-chip" data-cat="open">مفتوح الآن</button>
+    <button class="filter-chip" data-cat="promo">العروض</button>
+    <button class="filter-chip" data-cat="pizza">بيتزا</button>
+    <button class="filter-chip" data-cat="burgers">برجر</button>
+    <button class="filter-chip" data-cat="sushi">سوشي</button>
+    <button class="filter-chip" data-cat="arabic">مأكولات عربية</button>
+    <button class="filter-chip" data-cat="healthy">أكل صحي</button>
+    <button class="filter-chip" data-cat="asian">آسيوي</button>
+    <button class="filter-chip" data-cat="desserts">حلويات</button>
   </div>
 
   <div class="section-head">
-    <div><h2 id="resultsTitle">All restaurants</h2><p id="resultsCount" class="text-muted"></p></div>
+    <div><h2 id="resultsTitle">كل المطاعم</h2><p id="resultsCount" class="text-muted"></p></div>
   </div>
   <div class="grid grid-4" id="restaurantGrid"></div>
   <div class="empty-state" id="emptyState" style="display:none;">
     <i class="fa-regular fa-face-frown"></i>
-    <h3>No restaurants match your search</h3>
-    <p class="text-muted">Try a different keyword or clear your filters.</p>
+    <h3>مفيش مطاعم مطابقة لبحثك</h3>
+    <p class="text-muted">جرّب كلمة بحث مختلفة أو شيل الفلاتر.</p>
   </div>
 
   <section class="section-tight" id="favorites">
-    <div class="section-head"><div><h2>Your favorites</h2><p class="text-muted">Restaurants you've saved for quick reordering.</p></div></div>
+    <div class="section-head"><div><h2>مطاعمك المفضلة</h2><p class="text-muted">مطاعم حفظتها عشان تطلب منها بسهولة.</p></div></div>
     <div class="grid grid-4" id="favGrid"></div>
-    <p class="text-muted" id="noFavMsg" style="display:none;">You haven't saved any favorites yet — tap the heart icon on a restaurant to add one.</p>
+    <p class="text-muted" id="noFavMsg" style="display:none;">لسه مفيش حاجة في المفضلة — دوس على أيقونة القلب على أي مطعم عشان تضيفه.</p>
   </section>
 
   <section class="section-tight">
-    <div class="section-head"><div><h2>Recommended for you</h2><p class="text-muted">Based on your recent orders and cuisine preferences.</p></div></div>
+    <div class="section-head"><div><h2>مقترح لك</h2><p class="text-muted">على حسب طلباتك الأخيرة وتفضيلاتك في الأكل.</p></div></div>
     <div class="grid grid-4" id="recommendedGrid"></div>
   </section>
 
@@ -110,7 +110,7 @@ function applyFilters(){
   grid.innerHTML = list.map(r => FH.restaurantCardHTML(r)).join('');
   grid.style.display = list.length ? 'grid' : 'none';
   empty.style.display = list.length ? 'none' : 'block';
-  FH.qs('#resultsCount').textContent = `${list.length} restaurant${list.length !== 1 ? 's' : ''} found`;
+  FH.qs('#resultsCount').textContent = `${list.length} مطعم متاح`;
 }
 
 FH.qsa('.filter-chip').forEach(chip => {
@@ -124,7 +124,7 @@ FH.qsa('.filter-chip').forEach(chip => {
 FH.qs('#searchInput').addEventListener('input', (e) => { activeQuery = e.target.value; applyFilters(); });
 FH.qs('#sortSelect').addEventListener('change', applyFilters);
 
-// preselect category/search from URL
+// تحديد الفئة/البحث مسبقًا عن طريق الرابط
 const params = new URLSearchParams(window.location.search);
 if(params.get('cat')){
   activeCat = params.get('cat');
@@ -135,14 +135,14 @@ if(params.get('q')){ activeQuery = params.get('q'); FH.qs('#searchInput').value 
 
 applyFilters();
 
-// Favorites
+// المفضلة
 const favIds = FH.getFavorites();
 const favRestaurants = FH_DATA.restaurants.filter(r => favIds.includes(r.id));
 FH.qs('#favGrid').innerHTML = favRestaurants.map(r => FH.restaurantCardHTML(r)).join('');
 FH.qs('#favGrid').style.display = favRestaurants.length ? 'grid' : 'none';
 FH.qs('#noFavMsg').style.display = favRestaurants.length ? 'none' : 'block';
 
-// Recommended (last 4, simple mock logic)
+// مقترح (آخر 4 كمحاكاة بسيطة)
 FH.qs('#recommendedGrid').innerHTML = FH_DATA.restaurants.slice(-4).map(r => FH.restaurantCardHTML(r)).join('');
 </script>
 </body>

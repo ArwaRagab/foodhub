@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My account — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>حسابي — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -13,11 +13,11 @@
 
 <header class="navbar">
   <div class="container">
-    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
-    <nav class="nav-links"><a href="index.html">Home</a><a href="dashboard.html">Restaurants</a><a href="profile.html" class="active">My account</a></nav>
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
+    <nav class="nav-links"><a href="index.html">الرئيسية</a><a href="dashboard.html">المطاعم</a><a href="profile.html" class="active">حسابي</a></nav>
     <div class="nav-actions">
       <a href="cart.html" class="nav-cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
-      <a href="profile.html" class="avatar">AM</a>
+      <a href="profile.html" class="avatar">أم</a>
       <button class="nav-toggle"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
@@ -28,88 +28,88 @@
 
     <div class="flex-col gap-3">
       <div class="card profile-card">
-        <div class="avatar">AM</div>
-        <h3>Arwa Mostafa</h3>
+        <div class="avatar">أم</div>
+        <h3>أروى مصطفى</h3>
         <p class="text-sm text-muted">arwa.mostafa@email.com</p>
-        <button class="btn btn-outline btn-sm mt-2">Edit profile</button>
+        <button class="btn btn-outline btn-sm mt-2">تعديل الملف الشخصي</button>
       </div>
       <div class="card" style="padding:10px;">
-        <a href="#account" class="profile-menu-link active" onclick="showTab('account', this)"><i class="fa-solid fa-user"></i> Personal info</a>
-        <a href="#addresses" class="profile-menu-link" onclick="showTab('addresses', this)"><i class="fa-solid fa-location-dot"></i> Saved addresses</a>
-        <a href="#orders" class="profile-menu-link" onclick="showTab('orders', this)"><i class="fa-solid fa-receipt"></i> Order history</a>
-        <a href="#favorites" class="profile-menu-link" onclick="showTab('favorites', this)"><i class="fa-solid fa-heart"></i> Favorite restaurants</a>
-        <a href="#settings" class="profile-menu-link" onclick="showTab('settings', this)"><i class="fa-solid fa-gear"></i> Settings</a>
-        <a href="login.html" class="profile-menu-link" style="color:var(--c-danger);"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+        <a href="#account" class="profile-menu-link active" onclick="showTab('account', this)"><i class="fa-solid fa-user"></i> البيانات الشخصية</a>
+        <a href="#addresses" class="profile-menu-link" onclick="showTab('addresses', this)"><i class="fa-solid fa-location-dot"></i> العناوين المحفوظة</a>
+        <a href="#orders" class="profile-menu-link" onclick="showTab('orders', this)"><i class="fa-solid fa-receipt"></i> سجل الطلبات</a>
+        <a href="#favorites" class="profile-menu-link" onclick="showTab('favorites', this)"><i class="fa-solid fa-heart"></i> المطاعم المفضلة</a>
+        <a href="#settings" class="profile-menu-link" onclick="showTab('settings', this)"><i class="fa-solid fa-gear"></i> الإعدادات</a>
+        <a href="login.html" class="profile-menu-link" style="color:var(--c-danger);"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
       </div>
     </div>
 
     <div>
-      <!-- Personal info -->
+      <!-- البيانات الشخصية -->
       <div class="card card-pad tab-panel" id="tab-account">
-        <h3 class="mb-3">Personal information</h3>
+        <h3 class="mb-3">البيانات الشخصية</h3>
         <div class="grid grid-2" style="gap:16px;">
-          <div class="field"><label>Full name</label><input class="input" value="Arwa Mostafa"></div>
-          <div class="field"><label>Email address</label><input class="input" value="arwa.mostafa@email.com"></div>
-          <div class="field"><label>Phone number</label><input class="input" value="+20 100 123 4567"></div>
-          <div class="field"><label>Date of birth</label><input class="input" type="date" value="2000-04-12"></div>
+          <div class="field"><label>الاسم الكامل</label><input class="input" value="أروى مصطفى"></div>
+          <div class="field"><label>البريد الإلكتروني</label><input class="input" value="arwa.mostafa@email.com"></div>
+          <div class="field"><label>رقم الهاتف</label><input class="input" value="+20 100 123 4567"></div>
+          <div class="field"><label>تاريخ الميلاد</label><input class="input" type="date" value="2000-04-12"></div>
         </div>
-        <button class="btn btn-primary mt-1" onclick="FH.toast('Profile updated','success','fa-circle-check')">Save changes</button>
+        <button class="btn btn-primary mt-1" onclick="FH.toast('تم تحديث الملف الشخصي','success','fa-circle-check')">حفظ التغييرات</button>
       </div>
 
-      <!-- Addresses -->
+      <!-- العناوين -->
       <div class="card card-pad tab-panel" id="tab-addresses" style="display:none;">
-        <div class="flex justify-between items-center mb-3"><h3>Saved addresses</h3><button class="btn btn-primary btn-sm" data-open-modal="#addAddressModal"><i class="fa-solid fa-plus"></i> Add address</button></div>
+        <div class="flex justify-between items-center mb-3"><h3>العناوين المحفوظة</h3><button class="btn btn-primary btn-sm" data-open-modal="#addAddressModal"><i class="fa-solid fa-plus"></i> إضافة عنوان</button></div>
         <div class="flex-col gap-2" id="addressList"></div>
       </div>
 
-      <!-- Orders -->
+      <!-- الطلبات -->
       <div class="card card-pad tab-panel" id="tab-orders" style="display:none;">
-        <h3 class="mb-3">Order history</h3>
+        <h3 class="mb-3">سجل الطلبات</h3>
         <div class="table-wrap">
           <table class="data-table">
-            <thead><tr><th>Order ID</th><th>Restaurant</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>رقم الطلب</th><th>المطعم</th><th>التاريخ</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th><th></th></tr></thead>
             <tbody id="orderRows"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- Favorites -->
+      <!-- المفضلة -->
       <div class="card card-pad tab-panel" id="tab-favorites" style="display:none;">
-        <h3 class="mb-3">Favorite restaurants</h3>
+        <h3 class="mb-3">المطاعم المفضلة</h3>
         <div class="grid grid-2" id="favList"></div>
-        <p class="text-muted" id="noFav" style="display:none;">No favorites yet. Browse restaurants and tap the heart icon to save one here.</p>
+        <p class="text-muted" id="noFav" style="display:none;">لسه مفيش مفضلة. تصفح المطاعم ودوس على أيقونة القلب عشان تضيف هنا.</p>
       </div>
 
-      <!-- Settings -->
+      <!-- الإعدادات -->
       <div class="card card-pad tab-panel" id="tab-settings" style="display:none;">
-        <h3 class="mb-3">Settings</h3>
-        <div class="flex justify-between items-center mb-3"><div><strong>Push notifications</strong><div class="text-sm text-muted">Order updates and rider status</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="flex justify-between items-center mb-3"><div><strong>Email offers</strong><div class="text-sm text-muted">Promotions and discount codes</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="flex justify-between items-center mb-3"><div><strong>SMS alerts</strong><div class="text-sm text-muted">Delivery confirmations via SMS</div></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+        <h3 class="mb-3">الإعدادات</h3>
+        <div class="flex justify-between items-center mb-3"><div><strong>إشعارات فورية</strong><div class="text-sm text-muted">تحديثات الطلب وحالة المندوب</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex justify-between items-center mb-3"><div><strong>عروض عبر البريد الإلكتروني</strong><div class="text-sm text-muted">العروض وأكواد الخصم</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex justify-between items-center mb-3"><div><strong>تنبيهات SMS</strong><div class="text-sm text-muted">تأكيد التوصيل عبر رسالة نصية</div></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
         <div class="divider mb-3"></div>
-        <button class="btn btn-outline" style="border-color:var(--c-danger); color:var(--c-danger);" data-open-modal="#deleteModal">Delete account</button>
+        <button class="btn btn-outline" style="border-color:var(--c-danger); color:var(--c-danger);" data-open-modal="#deleteModal">حذف الحساب</button>
       </div>
     </div>
   </div>
 </main>
 
-<!-- Add address modal -->
+<!-- نافذة إضافة عنوان -->
 <div class="modal-overlay" id="addAddressModal">
   <div class="modal-box">
-    <div class="modal-head"><h3>Add new address</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
-    <div class="field"><label>Label</label><input class="input" placeholder="Home, Work, etc."></div>
-    <div class="field"><label>Street address</label><input class="input" placeholder="Street, building, apartment"></div>
-    <div class="field"><label>City</label><input class="input" placeholder="City"></div>
-    <button class="btn btn-primary btn-block" onclick="FH.toast('Address saved','success','fa-circle-check'); document.getElementById('addAddressModal').classList.remove('open');">Save address</button>
+    <div class="modal-head"><h3>إضافة عنوان جديد</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="field"><label>التسمية</label><input class="input" placeholder="المنزل، العمل، إلخ"></div>
+    <div class="field"><label>عنوان الشارع</label><input class="input" placeholder="الشارع، المبنى، الشقة"></div>
+    <div class="field"><label>المدينة</label><input class="input" placeholder="المدينة"></div>
+    <button class="btn btn-primary btn-block" onclick="FH.toast('تم حفظ العنوان','success','fa-circle-check'); document.getElementById('addAddressModal').classList.remove('open');">حفظ العنوان</button>
   </div>
 </div>
 
-<!-- Delete account modal -->
+<!-- نافذة حذف الحساب -->
 <div class="modal-overlay" id="deleteModal">
   <div class="modal-box">
-    <div class="modal-head"><h3>Delete account?</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
-    <p class="text-muted mb-3">This will permanently remove your account, order history, and saved addresses. This action cannot be undone.</p>
-    <div class="flex gap-2"><button class="btn btn-ghost btn-block" data-close-modal>Cancel</button><button class="btn btn-danger btn-block">Delete account</button></div>
+    <div class="modal-head"><h3>حذف الحساب؟</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
+    <p class="text-muted mb-3">سيؤدي هذا إلى حذف حسابك وسجل طلباتك وعناوينك المحفوظة بشكل نهائي. لا يمكن التراجع عن هذا الإجراء.</p>
+    <div class="flex gap-2"><button class="btn btn-ghost btn-block" data-close-modal>إلغاء</button><button class="btn btn-danger btn-block">حذف الحساب</button></div>
   </div>
 </div>
 
@@ -123,23 +123,23 @@ function showTab(tab, link){
   link.classList.add('active');
 }
 
-const statusBadge = (s) => s === 'Delivered' ? '<span class="badge badge-success">Delivered</span>' : s === 'Cancelled' ? '<span class="badge badge-danger">Cancelled</span>' : '<span class="badge badge-warning">'+s+'</span>';
+const statusBadge = (s) => s === 'تم التوصيل' ? '<span class="badge badge-success">تم التوصيل</span>' : s === 'ملغي' ? '<span class="badge badge-danger">ملغي</span>' : '<span class="badge badge-warning">'+s+'</span>';
 
 FH.qs('#orderRows').innerHTML = FH_DATA.orders.map(o => `
   <tr>
     <td class="price">${o.id}</td>
     <td>${o.restaurant}</td>
     <td>${o.date}</td>
-    <td>${o.items} items</td>
+    <td>${o.items} عناصر</td>
     <td class="price">${FH.fmt(o.total)}</td>
     <td>${statusBadge(o.status)}</td>
-    <td><div class="table-actions"><button class="icon-btn" aria-label="Reorder"><i class="fa-solid fa-rotate-right"></i></button></div></td>
+    <td><div class="table-actions"><button class="icon-btn" aria-label="إعادة الطلب"><i class="fa-solid fa-rotate-right"></i></button></div></td>
   </tr>`).join('');
 
 FH.qs('#addressList').innerHTML = FH_DATA.addresses.map(a => `
   <div class="address-card ${a.isDefault?'default':''}">
-    <div><strong>${a.label}</strong> ${a.isDefault?'<span class="badge badge-success">Default</span>':''}<div class="text-sm text-muted mt-1">${a.detail}</div></div>
-    <div class="table-actions"><button class="icon-btn" aria-label="Edit"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="Delete"><i class="fa-solid fa-trash"></i></button></div>
+    <div><strong>${a.label}</strong> ${a.isDefault?'<span class="badge badge-success">الافتراضي</span>':''}<div class="text-sm text-muted mt-1">${a.detail}</div></div>
+    <div class="table-actions"><button class="icon-btn" aria-label="تعديل"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="حذف"><i class="fa-solid fa-trash"></i></button></div>
   </div>`).join('');
 
 const favIds = FH.getFavorites();

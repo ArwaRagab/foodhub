@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Log in — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>تسجيل الدخول — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -12,34 +12,34 @@
 <div class="auth-shell">
 
   <aside class="auth-aside">
-    <a href="index.html" class="brand" style="color:white;"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <a href="index.html" class="brand" style="color:white;"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
     <div>
-      <h2 style="color:white; margin-bottom:14px;">Good food,<br>just a tap away.</h2>
-      <p style="color:var(--c-gray-300); max-width:340px;">Log in to reorder favorites, track live deliveries, and manage your saved addresses.</p>
+      <h2 style="color:white; margin-bottom:14px;">أكل لذيذ،<br>على بعد ضغطة واحدة.</h2>
+      <p style="color:var(--c-gray-300); max-width:340px;">سجّل دخولك لإعادة طلب وجباتك المفضلة، وتابع توصيلك لحظة بلحظة، وتحكم في عناوينك المحفوظة.</p>
       <div class="flex gap-2 mt-4">
-        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=300&q=80" alt="Sushi platter" style="width:90px;height:90px;border-radius:16px;object-fit:cover;">
-        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=300&q=80" alt="Burger" style="width:90px;height:90px;border-radius:16px;object-fit:cover;margin-top:18px;">
-        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80" alt="Dessert" style="width:90px;height:90px;border-radius:16px;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=300&q=80" alt="طبق سوشي" style="width:90px;height:90px;border-radius:16px;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=300&q=80" alt="برجر" style="width:90px;height:90px;border-radius:16px;object-fit:cover;margin-top:18px;">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80" alt="حلويات" style="width:90px;height:90px;border-radius:16px;object-fit:cover;">
       </div>
     </div>
-    <p style="color:var(--c-gray-500); font-size:13px;">© 2026 FoodHub. All rights reserved.</p>
+    <p style="color:var(--c-gray-500); font-size:13px;">© 2026 وجبة. جميع الحقوق محفوظة.</p>
   </aside>
 
   <div class="auth-form-side">
     <div class="auth-card">
-      <h2 class="mb-1">Welcome back</h2>
-      <p class="mb-3">Log in to continue ordering your favorite meals.</p>
+      <h2 class="mb-1">أهلاً بيك تاني</h2>
+      <p class="mb-3">سجّل دخولك لمتابعة طلب وجباتك المفضلة.</p>
 
       <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="field">
-          <label for="email">Email address</label>
+          <label for="email">البريد الإلكتروني</label>
           <div class="input-icon-wrap">
             <i class="fa-regular fa-envelope"></i>
             <input class="input" type="email" id="email" placeholder="you@example.com" required>
           </div>
         </div>
         <div class="field">
-          <label for="password">Password</label>
+          <label for="password">كلمة المرور</label>
           <div class="input-icon-wrap">
             <i class="fa-solid fa-lock"></i>
             <input class="input" type="password" id="password" placeholder="••••••••" required>
@@ -47,19 +47,19 @@
           </div>
         </div>
         <div class="flex justify-between items-center mb-3">
-          <label class="checkbox-row"><input type="checkbox"> Remember me</label>
-          <a href="forgot-password.html" class="link text-sm">Forgot password?</a>
+          <label class="checkbox-row"><input type="checkbox"> تذكرني</label>
+          <a href="forgot-password.html" class="link text-sm">نسيت كلمة المرور؟</a>
         </div>
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Log in</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">تسجيل الدخول</button>
       </form>
 
-      <div class="divider-text">or continue with</div>
+      <div class="divider-text">أو سجّل عن طريق</div>
       <div class="social-btn-row">
-        <button class="social-btn"><i class="fa-brands fa-google"></i> Google</button>
-        <button class="social-btn"><i class="fa-brands fa-apple"></i> Apple</button>
+        <button class="social-btn"><i class="fa-brands fa-google"></i> جوجل</button>
+        <button class="social-btn"><i class="fa-brands fa-apple"></i> آبل</button>
       </div>
 
-      <p class="text-center mt-3 text-sm">Don't have an account? <a href="register.html" class="link">Sign up</a></p>
+      <p class="text-center mt-3 text-sm">معاك حساب لسه؟ <a href="register.html" class="link">إنشاء حساب جديد</a></p>
     </div>
   </div>
 </div>
@@ -74,7 +74,7 @@ function togglePass(btn){
 }
 function handleLogin(e){
   e.preventDefault();
-  FH.toast('Logged in successfully', 'success', 'fa-circle-check');
+  FH.toast('تم تسجيل الدخول بنجاح', 'success', 'fa-circle-check');
   setTimeout(()=> window.location.href = 'dashboard.html', 700);
 }
 </script>

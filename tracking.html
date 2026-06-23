@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Track your order — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>تتبع الطلب — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -13,11 +13,11 @@
 
 <header class="navbar">
   <div class="container">
-    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
-    <nav class="nav-links"><a href="dashboard.html">Restaurants</a><a href="profile.html">Orders</a></nav>
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
+    <nav class="nav-links"><a href="dashboard.html">المطاعم</a><a href="profile.html">طلباتي</a></nav>
     <div class="nav-actions">
       <a href="cart.html" class="nav-cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
-      <a href="profile.html" class="avatar">AM</a>
+      <a href="profile.html" class="avatar">أم</a>
     </div>
   </div>
 </header>
@@ -25,62 +25,62 @@
 <main class="container section-tight">
 
   <div class="steps-row">
-    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> Cart</div>
+    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> السلة</div>
     <div class="step-line"></div>
-    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> Checkout</div>
+    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> إتمام الطلب</div>
     <div class="step-line"></div>
-    <div class="step-pill active"><span class="num">3</span> Track order</div>
+    <div class="step-pill active"><span class="num">3</span> تتبع الطلب</div>
   </div>
 
   <div class="card card-pad mb-3 flex justify-between items-center" style="flex-wrap:wrap; gap:14px;">
     <div>
-      <h2>Order <span class="price">#FH-10523</span></h2>
-      <p class="text-muted mt-1">Bella Napoli Pizzeria · 3 items · <span class="price">$24.50</span></p>
+      <h2>طلب <span class="price">#WJ-10523</span></h2>
+      <p class="text-muted mt-1">بيلا نابولي للبيتزا · 3 عناصر · <span class="price">122.50 ج.م</span></p>
     </div>
-    <span class="badge badge-warning" id="statusBadge"><i class="fa-solid fa-fire-burner"></i> Preparing</span>
+    <span class="badge badge-warning" id="statusBadge"><i class="fa-solid fa-fire-burner"></i> قيد التحضير</span>
   </div>
 
   <div class="card card-pad mb-3">
     <div class="track-timeline" id="timeline">
-      <div class="track-step done"><div class="dot"><i class="fa-solid fa-check"></i></div><span>Order received</span></div>
-      <div class="track-step current"><div class="dot"><i class="fa-solid fa-fire-burner"></i></div><span>Preparing</span></div>
-      <div class="track-step"><div class="dot"><i class="fa-solid fa-motorcycle"></i></div><span>On the way</span></div>
-      <div class="track-step"><div class="dot"><i class="fa-solid fa-box-open"></i></div><span>Delivered</span></div>
+      <div class="track-step done"><div class="dot"><i class="fa-solid fa-check"></i></div><span>تم استلام الطلب</span></div>
+      <div class="track-step current"><div class="dot"><i class="fa-solid fa-fire-burner"></i></div><span>قيد التحضير</span></div>
+      <div class="track-step"><div class="dot"><i class="fa-solid fa-motorcycle"></i></div><span>في الطريق إليك</span></div>
+      <div class="track-step"><div class="dot"><i class="fa-solid fa-box-open"></i></div><span>تم التوصيل</span></div>
     </div>
-    <p class="text-center text-muted mt-3" id="etaMsg">Estimated arrival: <strong>5:42 PM</strong> (in ~22 minutes)</p>
+    <p class="text-center text-muted mt-3" id="etaMsg">الوصول المتوقع: <strong>5:42 م</strong> (بعد حوالي 22 دقيقة)</p>
   </div>
 
   <div class="cart-layout">
     <div class="card card-pad">
-      <h3 class="mb-2"><i class="fa-solid fa-map-location-dot" style="color:var(--c-primary);"></i> Live delivery map</h3>
+      <h3 class="mb-2"><i class="fa-solid fa-map-location-dot" style="color:var(--c-primary);"></i> خريطة التوصيل المباشرة</h3>
       <div class="map-placeholder">
         <div class="map-rider-pin"><i class="fa-solid fa-motorcycle"></i></div>
         <i class="fa-solid fa-map-location-dot"></i>
-        <span>Map view placeholder — connect Google Maps / Mapbox SDK here</span>
+        <span>مكان عرض الخريطة — يتم ربطه بخدمة Google Maps أو Mapbox من الباك إند</span>
       </div>
       <div class="flex items-center gap-2 mt-3">
-        <div class="avatar" style="background:var(--c-primary-light); color:var(--c-primary-dark);">KM</div>
+        <div class="avatar" style="background:var(--c-primary-light); color:var(--c-primary-dark);">كم</div>
         <div>
-          <strong>Karim M. — your rider</strong>
-          <div class="text-sm text-muted">Honda CB125 · Plate 2451-RYH</div>
+          <strong>كريم محمد — مندوب التوصيل</strong>
+          <div class="text-sm text-muted">هوندا CB125 · لوحة 2451-ر ي ه</div>
         </div>
-        <div class="flex gap-2" style="margin-left:auto;">
-          <button class="btn btn-icon btn-ghost" aria-label="Call rider"><i class="fa-solid fa-phone"></i></button>
-          <button class="btn btn-icon btn-ghost" aria-label="Message rider"><i class="fa-solid fa-message"></i></button>
+        <div class="flex gap-2" style="margin-inline-start:auto;">
+          <button class="btn btn-icon btn-ghost" aria-label="اتصال بالمندوب"><i class="fa-solid fa-phone"></i></button>
+          <button class="btn btn-icon btn-ghost" aria-label="مراسلة المندوب"><i class="fa-solid fa-message"></i></button>
         </div>
       </div>
     </div>
 
     <div class="card card-pad">
-      <h3 class="mb-2">Order details</h3>
-      <div class="flex justify-between text-sm mt-1"><span>1× Margherita Classica</span><span class="price">$9.50</span></div>
-      <div class="flex justify-between text-sm mt-1"><span>1× Spicy Diavola</span><span class="price">$11.50</span></div>
-      <div class="flex justify-between text-sm mt-1"><span>1× San Pellegrino</span><span class="price">$2.00</span></div>
+      <h3 class="mb-2">تفاصيل الطلب</h3>
+      <div class="flex justify-between text-sm mt-1"><span>1× مارجريتا كلاسيك</span><span class="price">47.50 ج.م</span></div>
+      <div class="flex justify-between text-sm mt-1"><span>1× ديافولا الحارة</span><span class="price">57.50 ج.م</span></div>
+      <div class="flex justify-between text-sm mt-1"><span>1× سان بيليجرينو</span><span class="price">10.00 ج.م</span></div>
       <div class="ticket-divider"></div>
-      <div class="summary-row"><span>Subtotal</span><span class="price">$23.00</span></div>
-      <div class="summary-row"><span>Delivery fee</span><span class="price">$1.50</span></div>
-      <div class="summary-row total"><span>Total</span><span class="price">$24.50</span></div>
-      <button class="btn btn-outline btn-block mt-3"><i class="fa-regular fa-circle-question"></i> Get help with this order</button>
+      <div class="summary-row"><span>الإجمالي الفرعي</span><span class="price">115.00 ج.م</span></div>
+      <div class="summary-row"><span>رسوم التوصيل</span><span class="price">7.50 ج.م</span></div>
+      <div class="summary-row total"><span>الإجمالي</span><span class="price">122.50 ج.م</span></div>
+      <button class="btn btn-outline btn-block mt-3"><i class="fa-regular fa-circle-question"></i> احصل على مساعدة بخصوص الطلب</button>
     </div>
   </div>
 
@@ -88,11 +88,10 @@
 
 <script src="assets/js/app.js"></script>
 <script>
-// simulate live progress for demo purposes
+// محاكاة تقدّم الطلب لحظيًا لأغراض العرض
 const steps = FH.qsa('.track-step');
-const labels = ['Order received','Preparing','On the way','Delivered'];
 const icons = ['fa-check','fa-fire-burner','fa-motorcycle','fa-box-open'];
-let stage = 1; // starts at "preparing"
+let stage = 1; // يبدأ من "قيد التحضير"
 
 function advance(){
   if(stage >= steps.length - 1) return;
@@ -105,8 +104,8 @@ function advance(){
   steps.forEach((step,i)=>{ step.querySelector('.dot').innerHTML = i<=stage ? `<i class="fa-solid ${i<stage?'fa-check':icons[i]}"></i>` : `<i class="fa-solid ${icons[i]}"></i>`; });
 
   const badge = FH.qs('#statusBadge');
-  if(stage === 2){ badge.className='badge badge-info'; badge.innerHTML='<i class="fa-solid fa-motorcycle"></i> On the way'; FH.qs('#etaMsg').innerHTML='Estimated arrival: <strong>5:42 PM</strong> (in ~9 minutes)'; }
-  if(stage === 3){ badge.className='badge badge-success'; badge.innerHTML='<i class="fa-solid fa-box-open"></i> Delivered'; FH.qs('#etaMsg').innerHTML='Delivered at <strong>5:38 PM</strong>. Enjoy your meal! 🎉'; }
+  if(stage === 2){ badge.className='badge badge-info'; badge.innerHTML='<i class="fa-solid fa-motorcycle"></i> في الطريق إليك'; FH.qs('#etaMsg').innerHTML='الوصول المتوقع: <strong>5:42 م</strong> (بعد حوالي 9 دقايق)'; }
+  if(stage === 3){ badge.className='badge badge-success'; badge.innerHTML='<i class="fa-solid fa-box-open"></i> تم التوصيل'; FH.qs('#etaMsg').innerHTML='تم التوصيل في <strong>5:38 م</strong>. بالعافية! 🎉'; }
 }
 setTimeout(advance, 4000);
 setTimeout(advance, 9000);

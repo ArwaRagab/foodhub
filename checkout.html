@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>إتمام الطلب — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -13,11 +13,11 @@
 
 <header class="navbar">
   <div class="container">
-    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
-    <nav class="nav-links"><a href="dashboard.html">Restaurants</a><a href="profile.html">Orders</a></nav>
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
+    <nav class="nav-links"><a href="dashboard.html">المطاعم</a><a href="profile.html">طلباتي</a></nav>
     <div class="nav-actions">
       <a href="cart.html" class="nav-cart"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
-      <a href="profile.html" class="avatar">AM</a>
+      <a href="profile.html" class="avatar">أم</a>
     </div>
   </div>
 </header>
@@ -25,60 +25,60 @@
 <main class="container section-tight">
 
   <div class="steps-row">
-    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> Cart</div>
+    <div class="step-pill done"><span class="num"><i class="fa-solid fa-check"></i></span> السلة</div>
     <div class="step-line"></div>
-    <div class="step-pill active"><span class="num">2</span> Checkout</div>
+    <div class="step-pill active"><span class="num">2</span> إتمام الطلب</div>
     <div class="step-line"></div>
-    <div class="step-pill"><span class="num">3</span> Track order</div>
+    <div class="step-pill"><span class="num">3</span> تتبع الطلب</div>
   </div>
 
   <div class="cart-layout">
     <div class="flex-col gap-3">
 
       <div class="card card-pad">
-        <h3 class="mb-2"><i class="fa-solid fa-location-dot" style="color:var(--c-primary);"></i> Delivery address</h3>
+        <h3 class="mb-2"><i class="fa-solid fa-location-dot" style="color:var(--c-primary);"></i> عنوان التوصيل</h3>
         <div class="flex-col gap-2 mb-2" id="savedAddresses"></div>
         <form id="addressForm" class="grid grid-2" style="gap:16px;">
-          <div class="field" style="grid-column:1/-1;"><label>Street address</label><input class="input" id="street" placeholder="12 Tahrir Street, Apt 4B" required></div>
-          <div class="field"><label>City</label><input class="input" id="city" placeholder="Giza" required></div>
-          <div class="field"><label>Postal code</label><input class="input" id="postal" placeholder="12511"></div>
-          <div class="field" style="grid-column:1/-1;"><label>Delivery instructions (optional)</label><textarea class="input" rows="2" placeholder="e.g. Leave at the door, call on arrival"></textarea></div>
+          <div class="field" style="grid-column:1/-1;"><label>عنوان الشارع</label><input class="input" id="street" placeholder="12 شارع التحرير، شقة 4ب" required></div>
+          <div class="field"><label>المدينة</label><input class="input" id="city" placeholder="الجيزة" required></div>
+          <div class="field"><label>الرمز البريدي</label><input class="input" id="postal" placeholder="12511"></div>
+          <div class="field" style="grid-column:1/-1;"><label>ملاحظات التوصيل (اختياري)</label><textarea class="input" rows="2" placeholder="مثال: اترك الطلب عند الباب، اتصل عند الوصول"></textarea></div>
         </form>
       </div>
 
       <div class="card card-pad">
-        <h3 class="mb-2"><i class="fa-solid fa-wallet" style="color:var(--c-primary);"></i> Payment method</h3>
+        <h3 class="mb-2"><i class="fa-solid fa-wallet" style="color:var(--c-primary);"></i> طريقة الدفع</h3>
         <div class="flex-col gap-2">
           <label class="pay-option active" data-method="cash">
             <input type="radio" name="payment" checked> <i class="fa-solid fa-money-bill-wave"></i>
-            <div><strong>Cash on delivery</strong><div class="text-sm text-muted">Pay with cash when your order arrives</div></div>
+            <div><strong>الدفع عند الاستلام</strong><div class="text-sm text-muted">ادفع كاش لحظة وصول الطلب</div></div>
           </label>
           <label class="pay-option" data-method="card">
             <input type="radio" name="payment"> <i class="fa-regular fa-credit-card"></i>
-            <div><strong>Credit / Debit card</strong><div class="text-sm text-muted">Visa, Mastercard, Meeza</div></div>
+            <div><strong>بطاقة ائتمان / خصم</strong><div class="text-sm text-muted">فيزا، ماستركارد، ميزة</div></div>
           </label>
           <label class="pay-option" data-method="wallet">
             <input type="radio" name="payment"> <i class="fa-solid fa-wallet"></i>
-            <div><strong>Digital wallet</strong><div class="text-sm text-muted">Apple Pay, Google Pay, Fawry</div></div>
+            <div><strong>محفظة رقمية</strong><div class="text-sm text-muted">آبل باي، جوجل باي، فوري</div></div>
           </label>
         </div>
         <div id="cardFields" class="grid grid-2 mt-3" style="gap:16px; display:none;">
-          <div class="field" style="grid-column:1/-1;"><label>Card number</label><input class="input" placeholder="4242 4242 4242 4242"></div>
-          <div class="field"><label>Expiry</label><input class="input" placeholder="MM/YY"></div>
-          <div class="field"><label>CVC</label><input class="input" placeholder="123"></div>
+          <div class="field" style="grid-column:1/-1;"><label>رقم البطاقة</label><input class="input" placeholder="4242 4242 4242 4242"></div>
+          <div class="field"><label>تاريخ الانتهاء</label><input class="input" placeholder="MM/YY"></div>
+          <div class="field"><label>رمز الأمان CVC</label><input class="input" placeholder="123"></div>
         </div>
       </div>
 
     </div>
 
     <div class="card card-pad">
-      <h3 class="mb-2">Order summary</h3>
+      <h3 class="mb-2">ملخص الطلب</h3>
       <div id="checkoutLines" class="mb-2"></div>
-      <div class="summary-row"><span>Subtotal</span><span class="price" id="cSubtotal">$0.00</span></div>
-      <div class="summary-row"><span>Delivery fee</span><span class="price" id="cDelivery">$2.50</span></div>
-      <div class="summary-row total"><span>Total</span><span class="price" id="cTotal">$0.00</span></div>
-      <button class="btn btn-primary btn-block btn-lg mt-3" onclick="placeOrder()"><i class="fa-solid fa-bag-shopping"></i> Place order</button>
-      <p class="text-sm text-muted text-center mt-2">By placing your order you agree to FoodHub's Terms of Service.</p>
+      <div class="summary-row"><span>الإجمالي الفرعي</span><span class="price" id="cSubtotal">0.00 ج.م</span></div>
+      <div class="summary-row"><span>رسوم التوصيل</span><span class="price" id="cDelivery">12.50 ج.م</span></div>
+      <div class="summary-row total"><span>الإجمالي</span><span class="price" id="cTotal">0.00 ج.م</span></div>
+      <button class="btn btn-primary btn-block btn-lg mt-3" onclick="placeOrder()"><i class="fa-solid fa-bag-shopping"></i> تأكيد الطلب</button>
+      <p class="text-sm text-muted text-center mt-2">بتأكيدك للطلب، إنت موافق على شروط استخدام وجبة.</p>
     </div>
   </div>
 </main>
@@ -86,14 +86,14 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
-// saved addresses
+// العناوين المحفوظة
 FH.qs('#savedAddresses').innerHTML = FH_DATA.addresses.map(a => `
   <label class="address-card ${a.isDefault?'default':''}" style="cursor:pointer;">
-    <div><strong>${a.label}</strong> ${a.isDefault?'<span class="badge badge-success">Default</span>':''}<div class="text-sm text-muted mt-1">${a.detail}</div></div>
+    <div><strong>${a.label}</strong> ${a.isDefault?'<span class="badge badge-success">الافتراضي</span>':''}<div class="text-sm text-muted mt-1">${a.detail}</div></div>
     <input type="radio" name="savedAddr" ${a.isDefault?'checked':''}>
   </label>`).join('');
 
-// payment method switching
+// تبديل طريقة الدفع
 FH.qsa('.pay-option').forEach(opt => opt.addEventListener('click', () => {
   FH.qsa('.pay-option').forEach(o => o.classList.remove('active'));
   opt.classList.add('active');
@@ -101,23 +101,23 @@ FH.qsa('.pay-option').forEach(opt => opt.addEventListener('click', () => {
   FH.qs('#cardFields').style.display = opt.dataset.method === 'card' ? 'grid' : 'none';
 }));
 
-// summary
+// الملخص
 const cart = FH.getCart();
 FH.qs('#checkoutLines').innerHTML = cart.map(item => `
-  <div class="flex justify-between text-sm mt-1"><span>${item.qty}× ${item.name}</span><span class="price">${FH.fmt(item.price*item.qty)}</span></div>`).join('') || '<p class="text-muted text-sm">No items — go back to your cart.</p>';
+  <div class="flex justify-between text-sm mt-1"><span>${item.qty}× ${item.name}</span><span class="price">${FH.fmt(item.price*item.qty)}</span></div>`).join('') || '<p class="text-muted text-sm">لا توجد عناصر — رجّع للسلة وضيف حاجة.</p>';
 
 const subtotal = FH.cartSubtotal();
-const delivery = subtotal > 0 ? 2.50 : 0;
+const delivery = subtotal > 0 ? 12.5 : 0;
 const storedTotal = parseFloat(localStorage.getItem('fh_order_total')) || (subtotal + delivery);
 FH.qs('#cSubtotal').textContent = FH.fmt(subtotal);
 FH.qs('#cDelivery').textContent = FH.fmt(delivery);
 FH.qs('#cTotal').textContent = FH.fmt(storedTotal);
 
 function placeOrder(){
-  if(cart.length === 0){ FH.toast('Your cart is empty', 'danger', 'fa-triangle-exclamation'); return; }
+  if(cart.length === 0){ FH.toast('السلة فاضية', 'danger', 'fa-triangle-exclamation'); return; }
   const street = FH.qs('#street').value;
-  if(!street){ FH.toast('Please enter a delivery address', 'danger', 'fa-triangle-exclamation'); FH.qs('#street').focus(); return; }
-  FH.toast('Order placed successfully!', 'success', 'fa-circle-check');
+  if(!street){ FH.toast('من فضلك اكتب عنوان التوصيل', 'danger', 'fa-triangle-exclamation'); FH.qs('#street').focus(); return; }
+  FH.toast('تم تأكيد الطلب بنجاح!', 'success', 'fa-circle-check');
   FH.clearCart();
   setTimeout(()=> window.location.href = 'tracking.html', 800);
 }

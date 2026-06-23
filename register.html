@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create an account — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>إنشاء حساب — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -12,58 +12,58 @@
 <div class="auth-shell">
 
   <aside class="auth-aside">
-    <a href="index.html" class="brand" style="color:white;"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
+    <a href="index.html" class="brand" style="color:white;"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
     <div>
-      <h2 style="color:white; margin-bottom:14px;">Join thousands<br>ordering smarter.</h2>
-      <p style="color:var(--c-gray-300); max-width:340px;">Create a free account as a customer, or register your restaurant to start receiving orders today.</p>
+      <h2 style="color:white; margin-bottom:14px;">انضم لآلاف<br>بيطلبوا بذكاء.</h2>
+      <p style="color:var(--c-gray-300); max-width:340px;">أنشئ حساب مجاني كعميل، أو سجّل مطعمك وابدأ تستقبل طلبات من النهاردة.</p>
     </div>
-    <p style="color:var(--c-gray-500); font-size:13px;">© 2026 FoodHub. All rights reserved.</p>
+    <p style="color:var(--c-gray-500); font-size:13px;">© 2026 وجبة. جميع الحقوق محفوظة.</p>
   </aside>
 
   <div class="auth-form-side">
     <div class="auth-card">
-      <h2 class="mb-1">Create your account</h2>
-      <p class="mb-3">Choose how you'd like to use FoodHub.</p>
+      <h2 class="mb-1">إنشاء حساب جديد</h2>
+      <p class="mb-3">اختار الطريقة اللي تناسبك لاستخدام وجبة.</p>
 
       <div class="role-select" id="roleSelect">
         <button type="button" class="role-opt active" data-role="customer" onclick="selectRole(this,'customer')">
-          <i class="fa-solid fa-user"></i><span>Customer</span><small>Order food from restaurants</small>
+          <i class="fa-solid fa-user"></i><span>عميل</span><small>عشان تطلب من المطاعم</small>
         </button>
         <button type="button" class="role-opt" data-role="owner" onclick="selectRole(this,'owner')">
-          <i class="fa-solid fa-store"></i><span>Restaurant Owner</span><small>Manage menus & orders</small>
+          <i class="fa-solid fa-store"></i><span>صاحب مطعم</span><small>عشان تدير المنيو والطلبات</small>
         </button>
       </div>
 
       <form id="registerForm" onsubmit="handleRegister(event)">
         <div class="field">
-          <label for="fullName">Full name</label>
-          <input class="input" type="text" id="fullName" placeholder="Arwa Mostafa" required>
+          <label for="fullName">الاسم الكامل</label>
+          <input class="input" type="text" id="fullName" placeholder="أروى مصطفى" required>
         </div>
         <div class="field" id="restaurantNameField" style="display:none;">
-          <label for="restName">Restaurant name</label>
-          <input class="input" type="text" id="restName" placeholder="e.g. Clean Tank Kitchen">
+          <label for="restName">اسم المطعم</label>
+          <input class="input" type="text" id="restName" placeholder="مثال: مطبخ كلين تانك">
         </div>
         <div class="field">
-          <label for="regEmail">Email address</label>
+          <label for="regEmail">البريد الإلكتروني</label>
           <input class="input" type="email" id="regEmail" placeholder="you@example.com" required>
         </div>
         <div class="field">
-          <label for="regPhone">Phone number</label>
+          <label for="regPhone">رقم الهاتف</label>
           <input class="input" type="tel" id="regPhone" placeholder="+20 100 123 4567" required>
         </div>
         <div class="field">
-          <label for="regPassword">Password</label>
+          <label for="regPassword">كلمة المرور</label>
           <div class="input-icon-wrap">
             <i class="fa-solid fa-lock"></i>
-            <input class="input" type="password" id="regPassword" placeholder="Min. 8 characters" required minlength="8">
+            <input class="input" type="password" id="regPassword" placeholder="8 أحرف على الأقل" required minlength="8">
             <button type="button" class="toggle-pass" onclick="togglePass(this)"><i class="fa-regular fa-eye"></i></button>
           </div>
         </div>
-        <label class="checkbox-row mb-3"><input type="checkbox" required> I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
-        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Create customer account</button>
+        <label class="checkbox-row mb-3"><input type="checkbox" required> موافق على <a href="#" class="link">الشروط</a> و<a href="#" class="link">سياسة الخصوصية</a></label>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">إنشاء حساب عميل</button>
       </form>
 
-      <p class="text-center mt-3 text-sm">Already have an account? <a href="login.html" class="link">Log in</a></p>
+      <p class="text-center mt-3 text-sm">معاك حساب؟ <a href="login.html" class="link">تسجيل الدخول</a></p>
     </div>
   </div>
 </div>
@@ -76,9 +76,9 @@ function selectRole(btn, role){
   FH.qsa('.role-opt').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   FH.qs('#restaurantNameField').style.display = role === 'owner' ? 'block' : 'none';
-  FH.qs('#submitBtn').textContent = role === 'owner' ? 'Create restaurant account' : 'Create customer account';
+  FH.qs('#submitBtn').textContent = role === 'owner' ? 'إنشاء حساب مطعم' : 'إنشاء حساب عميل';
 }
-// preselect via ?role=owner
+// تحديد مسبق عن طريق ?role=owner
 const params = new URLSearchParams(window.location.search);
 if(params.get('role') === 'owner'){ selectRole(FH.qsa('.role-opt')[1], 'owner'); }
 
@@ -90,7 +90,7 @@ function togglePass(btn){
 }
 function handleRegister(e){
   e.preventDefault();
-  FH.toast('Account created successfully', 'success', 'fa-circle-check');
+  FH.toast('تم إنشاء الحساب بنجاح', 'success', 'fa-circle-check');
   setTimeout(()=> window.location.href = currentRole === 'owner' ? 'owner-dashboard.html' : 'dashboard.html', 700);
 }
 </script>

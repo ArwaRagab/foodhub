@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Owner dashboard — FoodHub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>لوحة تحكم المطعم — وجبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -13,140 +13,139 @@
 
 <div class="dash-shell">
   <aside class="dash-sidebar" id="sidebar">
-    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>FoodHub</a>
-    <div class="dash-nav-label">Overview</div>
-    <a class="dash-link active" href="#overview" onclick="showSection('overview', this)"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-    <div class="dash-nav-label">Manage</div>
-    <a class="dash-link" href="#orders" onclick="showSection('orders', this)"><i class="fa-solid fa-receipt"></i> Orders</a>
-    <a class="dash-link" href="#menu" onclick="showSection('menu', this)"><i class="fa-solid fa-utensils"></i> Menu items</a>
-    <a class="dash-link" href="#reviews" onclick="showSection('reviews', this)"><i class="fa-solid fa-star"></i> Reviews</a>
-    <div class="dash-nav-label">Account</div>
-    <a class="dash-link" href="#settings" onclick="showSection('settings', this)"><i class="fa-solid fa-gear"></i> Restaurant settings</a>
+    <a href="index.html" class="brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>وجبة</a>
+    <div class="dash-nav-label">نظرة عامة</div>
+    <a class="dash-link active" href="#overview" onclick="showSection('overview', this)"><i class="fa-solid fa-gauge"></i> الرئيسية</a>
+    <div class="dash-nav-label">الإدارة</div>
+    <a class="dash-link" href="#orders" onclick="showSection('orders', this)"><i class="fa-solid fa-receipt"></i> الطلبات</a>
+    <a class="dash-link" href="#menu" onclick="showSection('menu', this)"><i class="fa-solid fa-utensils"></i> عناصر المنيو</a>
+    <a class="dash-link" href="#reviews" onclick="showSection('reviews', this)"><i class="fa-solid fa-star"></i> التقييمات</a>
+    <div class="dash-nav-label">الحساب</div>
+    <a class="dash-link" href="#settings" onclick="showSection('settings', this)"><i class="fa-solid fa-gear"></i> إعدادات المطعم</a>
     <div class="dash-sidebar-foot">
-      <a class="dash-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+      <a class="dash-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
     </div>
   </aside>
 
   <div class="dash-main">
     <div class="dash-topbar">
       <button class="sidebar-toggle btn-icon btn-ghost" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
-      <div class="input-icon-wrap"><i class="fa-solid fa-magnifying-glass"></i><input class="input" placeholder="Search orders, menu items..."></div>
-      <div class="flex items-center gap-2" style="margin-left:auto;">
-        <button class="icon-btn" style="width:42px;height:42px;border-radius:50%;" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
-        <div class="avatar">BN</div>
-        <div style="display:none;" class="md-show"><strong>Bella Napoli</strong></div>
+      <div class="input-icon-wrap"><i class="fa-solid fa-magnifying-glass"></i><input class="input" placeholder="دور على طلبات أو عناصر المنيو..."></div>
+      <div class="flex items-center gap-2" style="margin-inline-start:auto;">
+        <button class="icon-btn" style="width:42px;height:42px;border-radius:50%;" aria-label="الإشعارات"><i class="fa-regular fa-bell"></i></button>
+        <div class="avatar">بن</div>
       </div>
     </div>
 
     <div class="dash-content">
 
-      <!-- OVERVIEW -->
+      <!-- نظرة عامة -->
       <section id="sec-overview">
         <div class="dash-page-head">
-          <div><h2>Welcome back, Bella Napoli 👋</h2><p class="text-muted">Here's how your restaurant is performing today.</p></div>
-          <button class="btn btn-primary" data-open-modal="#addItemModal"><i class="fa-solid fa-plus"></i> Add menu item</button>
+          <div><h2>أهلاً بيك يا بيلا نابولي 👋</h2><p class="text-muted">ده أداء مطعمك النهاردة.</p></div>
+          <button class="btn btn-primary" data-open-modal="#addItemModal"><i class="fa-solid fa-plus"></i> إضافة عنصر للمنيو</button>
         </div>
 
         <div class="grid grid-4 mb-3">
           <div class="stat-card">
             <div class="stat-card-top"><div class="stat-ic orange"><i class="fa-solid fa-receipt"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span></div>
-            <div class="stat-value">348</div><div class="stat-label">Total orders this month</div>
+            <div class="stat-value">348</div><div class="stat-label">إجمالي الطلبات هذا الشهر</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-top"><div class="stat-ic green"><i class="fa-solid fa-sack-dollar"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 8%</span></div>
-            <div class="stat-value">$6,420</div><div class="stat-label">Revenue this month</div>
+            <div class="stat-value">32,100 ج.م</div><div class="stat-label">إيرادات هذا الشهر</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-top"><div class="stat-ic blue"><i class="fa-solid fa-users"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 5%</span></div>
-            <div class="stat-value">912</div><div class="stat-label">Unique customers</div>
+            <div class="stat-value">912</div><div class="stat-label">عملاء فريدون</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-top"><div class="stat-ic yellow"><i class="fa-solid fa-fire-burner"></i></div><span class="stat-trend down"><i class="fa-solid fa-arrow-down"></i> 2%</span></div>
-            <div class="stat-value">14</div><div class="stat-label">Active orders right now</div>
+            <div class="stat-value">14</div><div class="stat-label">طلبات نشطة الآن</div>
           </div>
         </div>
 
         <div class="grid" style="grid-template-columns:1.6fr 1fr; gap:24px;">
           <div class="chart-card">
-            <div class="chart-head"><h4>Revenue — last 7 days</h4><span class="badge badge-success">+8% vs last week</span></div>
+            <div class="chart-head"><h4>الإيرادات — آخر 7 أيام</h4><span class="badge badge-success">+8% عن الأسبوع الماضي</span></div>
             <div class="bar-chart">
-              <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-label">Mon</span></div>
-              <div class="bar-col"><div class="bar" style="height:68%;"></div><span class="bar-label">Tue</span></div>
-              <div class="bar-col"><div class="bar" style="height:42%;"></div><span class="bar-label">Wed</span></div>
-              <div class="bar-col"><div class="bar" style="height:80%;"></div><span class="bar-label">Thu</span></div>
-              <div class="bar-col"><div class="bar active" style="height:95%;"></div><span class="bar-label">Fri</span></div>
-              <div class="bar-col"><div class="bar" style="height:73%;"></div><span class="bar-label">Sat</span></div>
-              <div class="bar-col"><div class="bar" style="height:60%;"></div><span class="bar-label">Sun</span></div>
+              <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-label">سبت</span></div>
+              <div class="bar-col"><div class="bar" style="height:68%;"></div><span class="bar-label">أحد</span></div>
+              <div class="bar-col"><div class="bar" style="height:42%;"></div><span class="bar-label">إثنين</span></div>
+              <div class="bar-col"><div class="bar" style="height:80%;"></div><span class="bar-label">ثلاثاء</span></div>
+              <div class="bar-col"><div class="bar active" style="height:95%;"></div><span class="bar-label">أربعاء</span></div>
+              <div class="bar-col"><div class="bar" style="height:73%;"></div><span class="bar-label">خميس</span></div>
+              <div class="bar-col"><div class="bar" style="height:60%;"></div><span class="bar-label">جمعة</span></div>
             </div>
           </div>
           <div class="chart-card">
-            <div class="chart-head"><h4>Top categories</h4></div>
+            <div class="chart-head"><h4>الأقسام الأكثر طلبًا</h4></div>
             <ul class="donut-legend">
-              <li><span class="sw" style="background:var(--c-primary);"></span> Pizza — 48%</li>
-              <li><span class="sw" style="background:var(--c-dark);"></span> Pasta — 27%</li>
-              <li><span class="sw" style="background:var(--c-gray-300);"></span> Sides — 15%</li>
-              <li><span class="sw" style="background:var(--c-gray-200);"></span> Drinks — 10%</li>
+              <li><span class="sw" style="background:var(--c-primary);"></span> بيتزا — 48%</li>
+              <li><span class="sw" style="background:var(--c-dark);"></span> باستا — 27%</li>
+              <li><span class="sw" style="background:var(--c-gray-300);"></span> أطباق جانبية — 15%</li>
+              <li><span class="sw" style="background:var(--c-gray-200);"></span> مشروبات — 10%</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- ORDERS -->
+      <!-- الطلبات -->
       <section id="sec-orders" style="display:none;">
-        <div class="dash-page-head"><div><h2>Orders</h2><p class="text-muted">Manage incoming and past orders.</p></div></div>
+        <div class="dash-page-head"><div><h2>الطلبات</h2><p class="text-muted">إدارة الطلبات الواردة والسابقة.</p></div></div>
         <div class="tabs mb-3">
-          <button class="tab-btn active">All (32)</button>
-          <button class="tab-btn">New (5)</button>
-          <button class="tab-btn">Preparing (4)</button>
-          <button class="tab-btn">On the way (3)</button>
-          <button class="tab-btn">Completed (20)</button>
+          <button class="tab-btn active">الكل (32)</button>
+          <button class="tab-btn">جديدة (5)</button>
+          <button class="tab-btn">قيد التحضير (4)</button>
+          <button class="tab-btn">في الطريق (3)</button>
+          <button class="tab-btn">مكتملة (20)</button>
         </div>
         <div class="card table-wrap">
           <table class="data-table">
-            <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>الطلب</th><th>العميل</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th><th></th></tr></thead>
             <tbody id="ownerOrderRows"></tbody>
           </table>
         </div>
-        <div class="pagination"><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button></div>
+        <div class="pagination"><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button></div>
       </section>
 
-      <!-- MENU -->
+      <!-- المنيو -->
       <section id="sec-menu" style="display:none;">
         <div class="dash-page-head">
-          <div><h2>Menu management</h2><p class="text-muted">Add, edit, or remove items from your menu.</p></div>
-          <button class="btn btn-primary" data-open-modal="#addItemModal"><i class="fa-solid fa-plus"></i> Add menu item</button>
+          <div><h2>إدارة المنيو</h2><p class="text-muted">أضف أو عدّل أو احذف عناصر من قائمة طعامك.</p></div>
+          <button class="btn btn-primary" data-open-modal="#addItemModal"><i class="fa-solid fa-plus"></i> إضافة عنصر للمنيو</button>
         </div>
         <div class="card table-wrap">
           <table class="data-table">
-            <thead><tr><th>Item</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>العنصر</th><th>الفئة</th><th>السعر</th><th>الحالة</th><th></th></tr></thead>
             <tbody id="ownerMenuRows"></tbody>
           </table>
         </div>
       </section>
 
-      <!-- REVIEWS -->
+      <!-- التقييمات -->
       <section id="sec-reviews" style="display:none;">
-        <div class="dash-page-head"><div><h2>Customer reviews</h2><p class="text-muted">Respond to feedback from your customers.</p></div></div>
+        <div class="dash-page-head"><div><h2>تقييمات العملاء</h2><p class="text-muted">رد على ملاحظات عملائك.</p></div></div>
         <div class="flex-col gap-2" id="ownerReviews"></div>
       </section>
 
-      <!-- SETTINGS -->
+      <!-- الإعدادات -->
       <section id="sec-settings" style="display:none;">
-        <div class="dash-page-head"><div><h2>Restaurant settings</h2><p class="text-muted">Update your restaurant profile and operating hours.</p></div></div>
+        <div class="dash-page-head"><div><h2>إعدادات المطعم</h2><p class="text-muted">حدّث بيانات مطعمك ومواعيد العمل.</p></div></div>
         <div class="card card-pad" style="max-width:640px;">
           <div class="grid grid-2" style="gap:16px;">
-            <div class="field"><label>Restaurant name</label><input class="input" value="Bella Napoli Pizzeria"></div>
-            <div class="field"><label>Cuisine type</label><input class="input" value="Italian · Pizza"></div>
-            <div class="field"><label>Opening time</label><input class="input" type="time" value="10:00"></div>
-            <div class="field"><label>Closing time</label><input class="input" type="time" value="23:00"></div>
-            <div class="field" style="grid-column:1/-1;"><label>Delivery fee</label><input class="input" value="2.50"></div>
-            <div class="field" style="grid-column:1/-1;"><label>Minimum order</label><input class="input" value="8.00"></div>
+            <div class="field"><label>اسم المطعم</label><input class="input" value="بيلا نابولي للبيتزا"></div>
+            <div class="field"><label>نوع المطبخ</label><input class="input" value="إيطالي · بيتزا"></div>
+            <div class="field"><label>وقت الفتح</label><input class="input" type="time" value="10:00"></div>
+            <div class="field"><label>وقت الإغلاق</label><input class="input" type="time" value="23:00"></div>
+            <div class="field" style="grid-column:1/-1;"><label>رسوم التوصيل</label><input class="input" value="12.50"></div>
+            <div class="field" style="grid-column:1/-1;"><label>الحد الأدنى للطلب</label><input class="input" value="40.00"></div>
           </div>
           <div class="flex justify-between items-center mt-2">
-            <div><strong>Currently accepting orders</strong><div class="text-sm text-muted">Toggle off to pause new orders temporarily</div></div>
+            <div><strong>استقبال الطلبات مفعّل حاليًا</strong><div class="text-sm text-muted">أوقف الاستقبال مؤقتًا عند الحاجة</div></div>
             <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
           </div>
-          <button class="btn btn-primary mt-3">Save changes</button>
+          <button class="btn btn-primary mt-3">حفظ التغييرات</button>
         </div>
       </section>
 
@@ -154,18 +153,18 @@
   </div>
 </div>
 
-<!-- Add/edit menu item modal -->
+<!-- نافذة إضافة/تعديل عنصر منيو -->
 <div class="modal-overlay" id="addItemModal">
   <div class="modal-box">
-    <div class="modal-head"><h3>Add menu item</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
-    <div class="field"><label>Item name</label><input class="input" placeholder="e.g. Margherita Classica"></div>
-    <div class="field"><label>Description</label><textarea class="input" rows="2" placeholder="Short description"></textarea></div>
+    <div class="modal-head"><h3>إضافة عنصر للمنيو</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="field"><label>اسم العنصر</label><input class="input" placeholder="مثال: مارجريتا كلاسيك"></div>
+    <div class="field"><label>الوصف</label><textarea class="input" rows="2" placeholder="وصف مختصر"></textarea></div>
     <div class="grid grid-2" style="gap:16px;">
-      <div class="field"><label>Category</label><select class="input"><option>Pizza</option><option>Pasta</option><option>Sides</option><option>Drinks</option></select></div>
-      <div class="field"><label>Price</label><input class="input" placeholder="9.50"></div>
+      <div class="field"><label>الفئة</label><select class="input"><option>بيتزا</option><option>باستا</option><option>أطباق جانبية</option><option>مشروبات</option></select></div>
+      <div class="field"><label>السعر</label><input class="input" placeholder="47.50"></div>
     </div>
-    <div class="field"><label>Image URL</label><input class="input" placeholder="https://..."></div>
-    <button class="btn btn-primary btn-block" onclick="FH.toast('Menu item saved','success','fa-circle-check'); document.getElementById('addItemModal').classList.remove('open');">Save item</button>
+    <div class="field"><label>رابط الصورة</label><input class="input" placeholder="https://..."></div>
+    <button class="btn btn-primary btn-block" onclick="FH.toast('تم حفظ العنصر','success','fa-circle-check'); document.getElementById('addItemModal').classList.remove('open');">حفظ العنصر</button>
   </div>
 </div>
 
@@ -180,24 +179,24 @@ function showSection(name, link){
 }
 
 const mockOwnerOrders = [
-  {id:'#FH-9931', customer:'Mona Hassan', items:3, total:24.50, status:'New'},
-  {id:'#FH-9930', customer:'Tariq Saeed', items:2, total:16.00, status:'Preparing'},
-  {id:'#FH-9928', customer:'Lina Fathy', items:5, total:38.20, status:'On the way'},
-  {id:'#FH-9921', customer:'Omar Said', items:1, total:9.50, status:'Completed'},
-  {id:'#FH-9918', customer:'Nour Adel', items:4, total:29.75, status:'Completed'},
+  {id:'#WJ-9931', customer:'منى حسن', items:3, total:122.5, status:'جديد'},
+  {id:'#WJ-9930', customer:'طارق سعيد', items:2, total:80, status:'قيد التحضير'},
+  {id:'#WJ-9928', customer:'لينا فتحي', items:5, total:191, status:'في الطريق'},
+  {id:'#WJ-9921', customer:'عمر سعيد', items:1, total:47.5, status:'مكتمل'},
+  {id:'#WJ-9918', customer:'نور عادل', items:4, total:148.75, status:'مكتمل'},
 ];
 const ownerStatusBadge = (s) => ({
-  'New':'<span class="badge badge-info">New</span>',
-  'Preparing':'<span class="badge badge-warning">Preparing</span>',
-  'On the way':'<span class="badge badge-info">On the way</span>',
-  'Completed':'<span class="badge badge-success">Completed</span>',
+  'جديد':'<span class="badge badge-info">جديد</span>',
+  'قيد التحضير':'<span class="badge badge-warning">قيد التحضير</span>',
+  'في الطريق':'<span class="badge badge-info">في الطريق</span>',
+  'مكتمل':'<span class="badge badge-success">مكتمل</span>',
 })[s];
 
 FH.qs('#ownerOrderRows').innerHTML = mockOwnerOrders.map(o => `
   <tr>
-    <td class="price">${o.id}</td><td>${o.customer}</td><td>${o.items} items</td><td class="price">${FH.fmt(o.total)}</td>
+    <td class="price">${o.id}</td><td>${o.customer}</td><td>${o.items} عناصر</td><td class="price">${FH.fmt(o.total)}</td>
     <td>${ownerStatusBadge(o.status)}</td>
-    <td><div class="table-actions"><button class="icon-btn" aria-label="View"><i class="fa-solid fa-eye"></i></button><button class="icon-btn" aria-label="Update status"><i class="fa-solid fa-pen"></i></button></div></td>
+    <td><div class="table-actions"><button class="icon-btn" aria-label="عرض"><i class="fa-solid fa-eye"></i></button><button class="icon-btn" aria-label="تحديث الحالة"><i class="fa-solid fa-pen"></i></button></div></td>
   </tr>`).join('');
 
 const ownerMenu = FH_DATA.getMenu('r1').items;
@@ -205,8 +204,8 @@ FH.qs('#ownerMenuRows').innerHTML = ownerMenu.map(item => `
   <tr>
     <td><div class="row-item"><img class="row-thumb" src="${item.img}" alt="${item.name}"><span>${item.name}</span></div></td>
     <td>${item.tab}</td><td class="price">${FH.fmt(item.price)}</td>
-    <td><span class="badge badge-success">Available</span></td>
-    <td><div class="table-actions"><button class="icon-btn" data-open-modal="#addItemModal" aria-label="Edit"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="Delete" onclick="this.closest('tr').remove(); FH.toast('Item deleted','default','fa-trash')"><i class="fa-solid fa-trash"></i></button></div></td>
+    <td><span class="badge badge-success">متوفر</span></td>
+    <td><div class="table-actions"><button class="icon-btn" data-open-modal="#addItemModal" aria-label="تعديل"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="حذف" onclick="this.closest('tr').remove(); FH.toast('تم حذف العنصر','default','fa-trash')"><i class="fa-solid fa-trash"></i></button></div></td>
   </tr>`).join('');
 
 FH.qs('#ownerReviews').innerHTML = FH_DATA.reviews.map(rv => `
@@ -216,7 +215,7 @@ FH.qs('#ownerReviews').innerHTML = FH_DATA.reviews.map(rv => `
       <span class="text-sm text-muted">${rv.role}</span>
     </div>
     <p class="mt-2">"${rv.text}"</p>
-    <button class="btn btn-ghost btn-sm mt-2"><i class="fa-regular fa-comment"></i> Reply</button>
+    <button class="btn btn-ghost btn-sm mt-2"><i class="fa-regular fa-comment"></i> رد</button>
   </div>`).join('');
 
 FH.initModals();
