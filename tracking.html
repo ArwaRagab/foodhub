@@ -40,75 +40,20 @@
     <span class="badge badge-warning" id="statusBadge"><i class="fa-solid fa-fire-burner"></i> قيد التحضير</span>
   </div>
 
-  <div class="card card-pad mb-3">
-    <div class="track-timeline" id="timeline">
-      <div class="track-step done"><div class="dot"><i class="fa-solid fa-check"></i></div><span>تم استلام الطلب</span></div>
-      <div class="track-step current"><div class="dot"><i class="fa-solid fa-fire-burner"></i></div><span>قيد التحضير</span></div>
-      <div class="track-step"><div class="dot"><i class="fa-solid fa-motorcycle"></i></div><span>في الطريق إليك</span></div>
-      <div class="track-step"><div class="dot"><i class="fa-solid fa-box-open"></i></div><span>تم التوصيل</span></div>
-    </div>
-    <p class="text-center text-muted mt-3" id="etaMsg">الوصول المتوقع: <strong>5:42 م</strong> (بعد حوالي 22 دقيقة)</p>
-  </div>
-
-  <div class="cart-layout">
-    <div class="card card-pad">
-      <h3 class="mb-2"><i class="fa-solid fa-map-location-dot" style="color:var(--c-primary);"></i> خريطة التوصيل المباشرة</h3>
-      <div class="map-placeholder">
-        <div class="map-rider-pin"><i class="fa-solid fa-motorcycle"></i></div>
-        <i class="fa-solid fa-map-location-dot"></i>
-        <span>مكان عرض الخريطة — يتم ربطه بخدمة Google Maps أو Mapbox من الباك إند</span>
-      </div>
-      <div class="flex items-center gap-2 mt-3">
-        <div class="avatar" style="background:var(--c-primary-light); color:var(--c-primary-dark);">كم</div>
-        <div>
-          <strong>كريم محمد — مندوب التوصيل</strong>
-          <div class="text-sm text-muted">هوندا CB125 · لوحة 2451-ر ي ه</div>
-        </div>
-        <div class="flex gap-2" style="margin-inline-start:auto;">
-          <button class="btn btn-icon btn-ghost" aria-label="اتصال بالمندوب"><i class="fa-solid fa-phone"></i></button>
-          <button class="btn btn-icon btn-ghost" aria-label="مراسلة المندوب"><i class="fa-solid fa-message"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card card-pad">
-      <h3 class="mb-2">تفاصيل الطلب</h3>
-      <div class="flex justify-between text-sm mt-1"><span>1× مارجريتا كلاسيك</span><span class="price">47.50 ج.م</span></div>
-      <div class="flex justify-between text-sm mt-1"><span>1× ديافولا الحارة</span><span class="price">57.50 ج.م</span></div>
-      <div class="flex justify-between text-sm mt-1"><span>1× سان بيليجرينو</span><span class="price">10.00 ج.م</span></div>
-      <div class="ticket-divider"></div>
-      <div class="summary-row"><span>الإجمالي الفرعي</span><span class="price">115.00 ج.م</span></div>
-      <div class="summary-row"><span>رسوم التوصيل</span><span class="price">7.50 ج.م</span></div>
-      <div class="summary-row total"><span>الإجمالي</span><span class="price">122.50 ج.م</span></div>
-      <button class="btn btn-outline btn-block mt-3"><i class="fa-regular fa-circle-question"></i> احصل على مساعدة بخصوص الطلب</button>
-    </div>
+  <div class="card card-pad" style="max-width:560px; margin:0 auto;">
+    <h3 class="mb-2">تفاصيل الطلب</h3>
+    <div class="flex justify-between text-sm mt-1"><span>1× مارجريتا كلاسيك</span><span class="price">47.50 ج.م</span></div>
+    <div class="flex justify-between text-sm mt-1"><span>1× ديافولا الحارة</span><span class="price">57.50 ج.م</span></div>
+    <div class="flex justify-between text-sm mt-1"><span>1× سان بيليجرينو</span><span class="price">10.00 ج.م</span></div>
+    <div class="ticket-divider"></div>
+    <div class="summary-row"><span>الإجمالي الفرعي</span><span class="price">115.00 ج.م</span></div>
+    <div class="summary-row"><span>رسوم التوصيل</span><span class="price">7.50 ج.م</span></div>
+    <div class="summary-row total"><span>الإجمالي</span><span class="price">122.50 ج.م</span></div>
+    <button class="btn btn-outline btn-block mt-3"><i class="fa-regular fa-circle-question"></i> احصل على مساعدة بخصوص الطلب</button>
   </div>
 
 </main>
 
 <script src="assets/js/app.js"></script>
-<script>
-// محاكاة تقدّم الطلب لحظيًا لأغراض العرض
-const steps = FH.qsa('.track-step');
-const icons = ['fa-check','fa-fire-burner','fa-motorcycle','fa-box-open'];
-let stage = 1; // يبدأ من "قيد التحضير"
-
-function advance(){
-  if(stage >= steps.length - 1) return;
-  stage++;
-  steps.forEach((step, i) => {
-    step.classList.remove('done','current');
-    if(i < stage) step.classList.add('done');
-    if(i === stage) step.classList.add('current');
-  });
-  steps.forEach((step,i)=>{ step.querySelector('.dot').innerHTML = i<=stage ? `<i class="fa-solid ${i<stage?'fa-check':icons[i]}"></i>` : `<i class="fa-solid ${icons[i]}"></i>`; });
-
-  const badge = FH.qs('#statusBadge');
-  if(stage === 2){ badge.className='badge badge-info'; badge.innerHTML='<i class="fa-solid fa-motorcycle"></i> في الطريق إليك'; FH.qs('#etaMsg').innerHTML='الوصول المتوقع: <strong>5:42 م</strong> (بعد حوالي 9 دقايق)'; }
-  if(stage === 3){ badge.className='badge badge-success'; badge.innerHTML='<i class="fa-solid fa-box-open"></i> تم التوصيل'; FH.qs('#etaMsg').innerHTML='تم التوصيل في <strong>5:38 م</strong>. بالعافية! 🎉'; }
-}
-setTimeout(advance, 4000);
-setTimeout(advance, 9000);
-</script>
 </body>
 </html>

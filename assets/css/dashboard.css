@@ -129,23 +129,6 @@ table.data-table{ width:100%; border-collapse:collapse; font-size:13.5px; min-wi
 .step-pill.done .num{ background:var(--c-success); color:white; }
 .step-line{ flex:1; height:2px; background:var(--c-gray-200); max-width:60px; }
 
-/* ---------- Order tracking ---------- */
-.track-timeline{ display:flex; justify-content:space-between; position:relative; margin:36px 0 10px; }
-.track-timeline::before{ content:''; position:absolute; top:18px; left:5%; right:5%; height:3px; background:var(--c-gray-200); z-index:0; }
-.track-step{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; flex:1; }
-.track-step .dot{ width:38px; height:38px; border-radius:50%; background:white; border:3px solid var(--c-gray-300); display:flex; align-items:center; justify-content:center; color:var(--c-gray-400); font-size:14px; }
-.track-step.done .dot{ background:var(--c-success); border-color:var(--c-success); color:white; }
-.track-step.current .dot{ background:var(--c-primary); border-color:var(--c-primary); color:white; box-shadow:0 0 0 6px var(--c-primary-light); }
-.track-step span{ font-size:12.5px; font-weight:700; color:var(--c-gray-500); }
-.track-step.done span, .track-step.current span{ color:var(--c-dark); }
-@media (max-width:640px){ .track-timeline{ flex-direction:column; align-items:flex-start; gap:24px; }
-  .track-timeline::before{ inset-inline-start:18px; top:5%; bottom:5%; right:auto; width:3px; height:90%; }
-  .track-step{ flex-direction:row; text-align:start; } }
-.map-placeholder{ background:linear-gradient(135deg,var(--c-gray-100) 25%,var(--c-gray-200) 25%,var(--c-gray-200) 50%,var(--c-gray-100) 50%,var(--c-gray-100) 75%,var(--c-gray-200) 75%,var(--c-gray-200) 100%); background-size:28px 28px; border-radius:var(--r-lg); height:280px; display:flex; align-items:center; justify-content:center; color:var(--c-gray-500); font-weight:600; flex-direction:column; gap:10px; border:1px solid var(--c-gray-200); position:relative; overflow:hidden; }
-.map-placeholder i{ font-size:30px; color:var(--c-primary); }
-.map-rider-pin{ position:absolute; width:46px; height:46px; border-radius:50%; background:var(--c-dark); color:white; display:flex; align-items:center; justify-content:center; box-shadow:var(--sh-lg); top:42%; inset-inline-start:55%; animation:pulse 2.2s infinite; }
-@keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.08); } }
-
 /* ---------- Profile ---------- */
 .profile-shell{ display:grid; grid-template-columns:280px 1fr; gap:28px; }
 @media (max-width:860px){ .profile-shell{ grid-template-columns:1fr; } }

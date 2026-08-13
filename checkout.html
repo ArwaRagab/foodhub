@@ -53,19 +53,6 @@
             <input type="radio" name="payment" checked> <i class="fa-solid fa-money-bill-wave"></i>
             <div><strong>الدفع عند الاستلام</strong><div class="text-sm text-muted">ادفع كاش لحظة وصول الطلب</div></div>
           </label>
-          <label class="pay-option" data-method="card">
-            <input type="radio" name="payment"> <i class="fa-regular fa-credit-card"></i>
-            <div><strong>بطاقة ائتمان / خصم</strong><div class="text-sm text-muted">فيزا، ماستركارد، ميزة</div></div>
-          </label>
-          <label class="pay-option" data-method="wallet">
-            <input type="radio" name="payment"> <i class="fa-solid fa-wallet"></i>
-            <div><strong>محفظة رقمية</strong><div class="text-sm text-muted">آبل باي، جوجل باي، فوري</div></div>
-          </label>
-        </div>
-        <div id="cardFields" class="grid grid-2 mt-3" style="gap:16px; display:none;">
-          <div class="field" style="grid-column:1/-1;"><label>رقم البطاقة</label><input class="input" placeholder="4242 4242 4242 4242"></div>
-          <div class="field"><label>تاريخ الانتهاء</label><input class="input" placeholder="MM/YY"></div>
-          <div class="field"><label>رمز الأمان CVC</label><input class="input" placeholder="123"></div>
         </div>
       </div>
 
@@ -98,7 +85,6 @@ FH.qsa('.pay-option').forEach(opt => opt.addEventListener('click', () => {
   FH.qsa('.pay-option').forEach(o => o.classList.remove('active'));
   opt.classList.add('active');
   opt.querySelector('input').checked = true;
-  FH.qs('#cardFields').style.display = opt.dataset.method === 'card' ? 'grid' : 'none';
 }));
 
 // الملخص

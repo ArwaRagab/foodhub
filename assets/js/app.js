@@ -119,7 +119,6 @@ const FH = (() => {
   }
 
   function restaurantCardHTML(r){
-    const fav = isFavorite(r.id);
     return `
     <div class="r-card" data-rid="${r.id}">
       <a href="restaurant.html?id=${r.id}" class="r-card-img" aria-label="عرض ${r.name}">
@@ -127,9 +126,6 @@ const FH = (() => {
         ${r.promo ? `<span class="r-card-badge promo"><i class="fa-solid fa-bolt"></i> ${r.promo}</span>` : ''}
         ${!r.isOpen ? `<div class="closed-overlay">مغلق الآن</div>` : ''}
       </a>
-      <button class="r-fav-btn ${fav ? 'active':''}" aria-label="تبديل المفضلة" onclick="FH.handleFavClick(event,'${r.id}')">
-        <i class="fa-${fav ? 'solid':'regular'} fa-heart"></i>
-      </button>
       <a href="restaurant.html?id=${r.id}" class="r-card-body" style="display:block;">
         <div class="r-card-top">
           <div>
@@ -147,20 +143,12 @@ const FH = (() => {
     </div>`;
   }
 
-  function handleFavClick(e, id){
-    e.preventDefault(); e.stopPropagation();
-    const active = toggleFavorite(id);
-    const btn = e.currentTarget;
-    btn.classList.toggle('active', active);
-    btn.querySelector('i').className = `fa-${active ? 'solid':'regular'} fa-heart`;
-  }
-
   return {
     qs, qsa, fmt, toast, initNavbar, initSidebar, initModals,
     getCart, setCart, addToCart, updateCartQty, removeFromCart, clearCart,
     cartCount, cartSubtotal, updateCartBadge,
     getFavorites, toggleFavorite, isFavorite,
-    renderStars, restaurantCardHTML, handleFavClick
+    renderStars, restaurantCardHTML
   };
 })();
 

@@ -31,13 +31,11 @@
         <div class="avatar">أم</div>
         <h3>أروى مصطفى</h3>
         <p class="text-sm text-muted">arwa.mostafa@email.com</p>
-        <button class="btn btn-outline btn-sm mt-2">تعديل الملف الشخصي</button>
       </div>
       <div class="card" style="padding:10px;">
         <a href="#account" class="profile-menu-link active" onclick="showTab('account', this)"><i class="fa-solid fa-user"></i> البيانات الشخصية</a>
         <a href="#addresses" class="profile-menu-link" onclick="showTab('addresses', this)"><i class="fa-solid fa-location-dot"></i> العناوين المحفوظة</a>
         <a href="#orders" class="profile-menu-link" onclick="showTab('orders', this)"><i class="fa-solid fa-receipt"></i> سجل الطلبات</a>
-        <a href="#favorites" class="profile-menu-link" onclick="showTab('favorites', this)"><i class="fa-solid fa-heart"></i> المطاعم المفضلة</a>
         <a href="#settings" class="profile-menu-link" onclick="showTab('settings', this)"><i class="fa-solid fa-gear"></i> الإعدادات</a>
         <a href="login.html" class="profile-menu-link" style="color:var(--c-danger);"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
       </div>
@@ -71,13 +69,6 @@
             <tbody id="orderRows"></tbody>
           </table>
         </div>
-      </div>
-
-      <!-- المفضلة -->
-      <div class="card card-pad tab-panel" id="tab-favorites" style="display:none;">
-        <h3 class="mb-3">المطاعم المفضلة</h3>
-        <div class="grid grid-2" id="favList"></div>
-        <p class="text-muted" id="noFav" style="display:none;">لسه مفيش مفضلة. تصفح المطاعم ودوس على أيقونة القلب عشان تضيف هنا.</p>
       </div>
 
       <!-- الإعدادات -->
@@ -141,11 +132,6 @@ FH.qs('#addressList').innerHTML = FH_DATA.addresses.map(a => `
     <div><strong>${a.label}</strong> ${a.isDefault?'<span class="badge badge-success">الافتراضي</span>':''}<div class="text-sm text-muted mt-1">${a.detail}</div></div>
     <div class="table-actions"><button class="icon-btn" aria-label="تعديل"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="حذف"><i class="fa-solid fa-trash"></i></button></div>
   </div>`).join('');
-
-const favIds = FH.getFavorites();
-const favs = FH_DATA.restaurants.filter(r => favIds.includes(r.id));
-FH.qs('#favList').innerHTML = favs.map(r => FH.restaurantCardHTML(r)).join('');
-FH.qs('#noFav').style.display = favs.length ? 'none' : 'block';
 </script>
 </body>
 </html>

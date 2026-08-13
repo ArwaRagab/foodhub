@@ -36,19 +36,12 @@
     <div class="r-info-meta">
       <div class="flex items-center gap-2" style="flex-wrap:wrap;">
         <h2 id="rName">—</h2>
-        <span class="badge badge-success" id="openBadge">مفتوح الآن</span>
       </div>
       <p id="rCuisine" class="text-muted mt-1">—</p>
       <div class="r-card-meta mt-1">
-        <span class="rating-pill" id="rRating"></span>
         <span><i class="fa-regular fa-clock"></i> <span id="rTime"></span></span>
         <span><i class="fa-solid fa-motorcycle"></i> <span id="rFee"></span> توصيل</span>
-        <span><i class="fa-solid fa-tag"></i> الحد الأدنى <span id="rMin"></span></span>
       </div>
-    </div>
-    <div class="flex gap-2">
-      <button class="btn btn-outline btn-icon" id="favBtn" aria-label="حفظ في المفضلة"><i class="fa-regular fa-heart"></i></button>
-      <button class="btn btn-outline" data-open-modal="#reviewsModal"><i class="fa-solid fa-comment"></i> التقييمات</button>
     </div>
   </div>
 
@@ -66,14 +59,6 @@
   </div>
 </div>
 
-<!-- نافذة التقييمات -->
-<div class="modal-overlay" id="reviewsModal">
-  <div class="modal-box" style="max-width:480px;">
-    <div class="modal-head"><h3>تقييمات العملاء</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
-    <div class="flex-col gap-2" id="modalReviews"></div>
-  </div>
-</div>
-
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
@@ -85,19 +70,8 @@ FH.qs('#heroImg').src = r.image; FH.qs('#heroImg').alt = r.name;
 FH.qs('#logoImg').src = r.logo;
 FH.qs('#rName').textContent = r.name;
 FH.qs('#rCuisine').textContent = r.cuisine;
-FH.qs('#rRating').innerHTML = FH.renderStars(r.rating) + ` (${r.reviewsCount})`;
 FH.qs('#rTime').textContent = r.deliveryTime;
 FH.qs('#rFee').textContent = r.deliveryFee === 0 ? 'مجاني' : FH.fmt(r.deliveryFee);
-FH.qs('#rMin').textContent = FH.fmt(r.minOrder);
-FH.qs('#openBadge').outerHTML = r.isOpen ? '<span class="badge badge-success" id="openBadge"><i class="fa-solid fa-circle" style="font-size:6px;"></i> مفتوح الآن</span>' : '<span class="badge badge-danger" id="openBadge">مغلق الآن</span>';
-
-const favBtn = FH.qs('#favBtn');
-function refreshFav(){
-  const active = FH.isFavorite(r.id);
-  favBtn.innerHTML = active ? '<i class="fa-solid fa-heart" style="color:var(--c-primary);"></i>' : '<i class="fa-regular fa-heart"></i>';
-}
-favBtn.addEventListener('click', () => { FH.toggleFavorite(r.id); refreshFav(); });
-refreshFav();
 
 const menu = FH_DATA.getMenu(r.id);
 let activeTab = menu.tabs[0];
@@ -138,14 +112,6 @@ function updateCartBar(){
   FH.qs('#cartBarTotal').textContent = FH.fmt(FH.cartSubtotal());
 }
 updateCartBar();
-
-// محتوى تجريبي لنافذة التقييمات
-FH.qs('#modalReviews').innerHTML = FH_DATA.reviews.map(rv => `
-  <div class="review-card" style="padding:16px;">
-    <div class="review-stars">${'<i class="fa-solid fa-star"></i>'.repeat(rv.rating)}</div>
-    <p class="text-sm">"${rv.text}"</p>
-    <div class="review-person"><div class="avatar" style="width:32px;height:32px;font-size:12px;">${rv.name.split(' ').map(n=>n[0]).join('')}</div><strong class="text-sm">${rv.name}</strong></div>
-  </div>`).join('');
 </script>
 </body>
 </html>

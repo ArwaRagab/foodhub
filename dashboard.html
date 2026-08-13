@@ -47,19 +47,6 @@
     </select>
   </div>
 
-  <div class="flex gap-2 mb-3" style="overflow-x:auto;">
-    <button class="filter-chip active" data-cat="all">الكل</button>
-    <button class="filter-chip" data-cat="open">مفتوح الآن</button>
-    <button class="filter-chip" data-cat="promo">العروض</button>
-    <button class="filter-chip" data-cat="pizza">بيتزا</button>
-    <button class="filter-chip" data-cat="burgers">برجر</button>
-    <button class="filter-chip" data-cat="sushi">سوشي</button>
-    <button class="filter-chip" data-cat="arabic">مأكولات عربية</button>
-    <button class="filter-chip" data-cat="healthy">أكل صحي</button>
-    <button class="filter-chip" data-cat="asian">آسيوي</button>
-    <button class="filter-chip" data-cat="desserts">حلويات</button>
-  </div>
-
   <div class="section-head">
     <div><h2 id="resultsTitle">كل المطاعم</h2><p id="resultsCount" class="text-muted"></p></div>
   </div>
@@ -86,14 +73,10 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
-let activeCat = 'all';
 let activeQuery = '';
 
 function applyFilters(){
   let list = [...FH_DATA.restaurants];
-  if(activeCat === 'open') list = list.filter(r => r.isOpen);
-  else if(activeCat === 'promo') list = list.filter(r => !!r.promo);
-  else if(activeCat !== 'all') list = list.filter(r => r.categoryIds.includes(activeCat));
 
   if(activeQuery){
     const q = activeQuery.toLowerCase();
@@ -113,24 +96,11 @@ function applyFilters(){
   FH.qs('#resultsCount').textContent = `${list.length} مطعم متاح`;
 }
 
-FH.qsa('.filter-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    FH.qsa('.filter-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    activeCat = chip.dataset.cat;
-    applyFilters();
-  });
-});
 FH.qs('#searchInput').addEventListener('input', (e) => { activeQuery = e.target.value; applyFilters(); });
 FH.qs('#sortSelect').addEventListener('change', applyFilters);
 
-// تحديد الفئة/البحث مسبقًا عن طريق الرابط
+// تحديد البحث مسبقًا عن طريق الرابط
 const params = new URLSearchParams(window.location.search);
-if(params.get('cat')){
-  activeCat = params.get('cat');
-  const target = FH.qsa('.filter-chip').find(c => c.dataset.cat === activeCat);
-  if(target){ FH.qsa('.filter-chip').forEach(c => c.classList.remove('active')); target.classList.add('active'); }
-}
 if(params.get('q')){ activeQuery = params.get('q'); FH.qs('#searchInput').value = activeQuery; }
 
 applyFilters();
