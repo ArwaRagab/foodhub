@@ -123,7 +123,6 @@ const FH = (() => {
     <div class="r-card" data-rid="${r.id}">
       <a href="restaurant.html?id=${r.id}" class="r-card-img" aria-label="عرض ${r.name}">
         <img src="${r.image}" alt="${r.name}" loading="lazy">
-        ${r.promo ? `<span class="r-card-badge promo"><i class="fa-solid fa-bolt"></i> ${r.promo}</span>` : ''}
         ${!r.isOpen ? `<div class="closed-overlay">مغلق الآن</div>` : ''}
       </a>
       <a href="restaurant.html?id=${r.id}" class="r-card-body" style="display:block;">

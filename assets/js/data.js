@@ -20,7 +20,7 @@ const FH_DATA = {
   restaurants: [
     {
       id:'r1', name:'بيلا نابولي للبيتزا', cuisine:'إيطالي · بيتزا', categoryIds:['pizza'],
-      rating:4.8, reviewsCount:642, deliveryTime:'25-35 دقيقة', deliveryFee:12.5, minOrder:40, isOpen:true, promo:'خصم 30%',
+      rating:4.8, reviewsCount:642, deliveryTime:'25-35 دقيقة', deliveryFee:12.5, minOrder:40, isOpen:true,
       image:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80',
       logo:'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=80'
     },
@@ -32,13 +32,13 @@ const FH_DATA = {
     },
     {
       id:'r3', name:'ساكورا للسوشي', cuisine:'ياباني · سوشي', categoryIds:['sushi','asian'],
-      rating:4.9, reviewsCount:301, deliveryTime:'30-40 دقيقة', deliveryFee:17.5, minOrder:50, isOpen:true, promo:'توصيل مجاني',
+      rating:4.9, reviewsCount:301, deliveryTime:'30-40 دقيقة', deliveryFee:17.5, minOrder:50, isOpen:true,
       image:'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80',
       logo:'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=200&q=80'
     },
     {
       id:'r4', name:'مطبخ الروضة الدمشقي', cuisine:'شامي · مأكولات عربية', categoryIds:['arabic'],
-      rating:4.7, reviewsCount:889, deliveryTime:'25-35 دقيقة', deliveryFee:0, minOrder:35, isOpen:true, promo:'توصيل مجاني',
+      rating:4.7, reviewsCount:889, deliveryTime:'25-35 دقيقة', deliveryFee:0, minOrder:35, isOpen:true,
       image:'https://images.unsplash.com/photo-1601315379734-9443ed3b3c8d?auto=format&fit=crop&w=900&q=80',
       logo:'https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&w=200&q=80'
     },
@@ -56,7 +56,7 @@ const FH_DATA = {
     },
     {
       id:'r7', name:'سويت كرامبز للحلويات', cuisine:'حلويات · مخبوزات', categoryIds:['desserts'],
-      rating:4.9, reviewsCount:530, deliveryTime:'20-30 دقيقة', deliveryFee:10, minOrder:20, isOpen:true, promo:'خصم 20%',
+      rating:4.9, reviewsCount:530, deliveryTime:'20-30 دقيقة', deliveryFee:10, minOrder:20, isOpen:true,
       image:'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80',
       logo:'https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?auto=format&fit=crop&w=200&q=80'
     },

@@ -19,7 +19,6 @@
     <div class="dash-nav-label">الإدارة</div>
     <a class="dash-link" href="#orders" onclick="showSection('orders', this)"><i class="fa-solid fa-receipt"></i> الطلبات</a>
     <a class="dash-link" href="#menu" onclick="showSection('menu', this)"><i class="fa-solid fa-utensils"></i> عناصر المنيو</a>
-    <a class="dash-link" href="#reviews" onclick="showSection('reviews', this)"><i class="fa-solid fa-star"></i> التقييمات</a>
     <div class="dash-nav-label">الحساب</div>
     <a class="dash-link" href="#settings" onclick="showSection('settings', this)"><i class="fa-solid fa-gear"></i> إعدادات المطعم</a>
     <div class="dash-sidebar-foot">
@@ -46,7 +45,7 @@
           <button class="btn btn-primary" data-open-modal="#addItemModal"><i class="fa-solid fa-plus"></i> إضافة عنصر للمنيو</button>
         </div>
 
-        <div class="grid grid-4 mb-3">
+        <div class="grid grid-2 mb-3">
           <div class="stat-card">
             <div class="stat-card-top"><div class="stat-ic orange"><i class="fa-solid fa-receipt"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span></div>
             <div class="stat-value">348</div><div class="stat-label">إجمالي الطلبات هذا الشهر</div>
@@ -55,37 +54,18 @@
             <div class="stat-card-top"><div class="stat-ic green"><i class="fa-solid fa-sack-dollar"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 8%</span></div>
             <div class="stat-value">32,100 ج.م</div><div class="stat-label">إيرادات هذا الشهر</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card-top"><div class="stat-ic blue"><i class="fa-solid fa-users"></i></div><span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 5%</span></div>
-            <div class="stat-value">912</div><div class="stat-label">عملاء فريدون</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-top"><div class="stat-ic yellow"><i class="fa-solid fa-fire-burner"></i></div><span class="stat-trend down"><i class="fa-solid fa-arrow-down"></i> 2%</span></div>
-            <div class="stat-value">14</div><div class="stat-label">طلبات نشطة الآن</div>
-          </div>
         </div>
 
-        <div class="grid" style="grid-template-columns:1.6fr 1fr; gap:24px;">
-          <div class="chart-card">
-            <div class="chart-head"><h4>الإيرادات — آخر 7 أيام</h4><span class="badge badge-success">+8% عن الأسبوع الماضي</span></div>
-            <div class="bar-chart">
-              <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-label">سبت</span></div>
-              <div class="bar-col"><div class="bar" style="height:68%;"></div><span class="bar-label">أحد</span></div>
-              <div class="bar-col"><div class="bar" style="height:42%;"></div><span class="bar-label">إثنين</span></div>
-              <div class="bar-col"><div class="bar" style="height:80%;"></div><span class="bar-label">ثلاثاء</span></div>
-              <div class="bar-col"><div class="bar active" style="height:95%;"></div><span class="bar-label">أربعاء</span></div>
-              <div class="bar-col"><div class="bar" style="height:73%;"></div><span class="bar-label">خميس</span></div>
-              <div class="bar-col"><div class="bar" style="height:60%;"></div><span class="bar-label">جمعة</span></div>
-            </div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-head"><h4>الأقسام الأكثر طلبًا</h4></div>
-            <ul class="donut-legend">
-              <li><span class="sw" style="background:var(--c-primary);"></span> بيتزا — 48%</li>
-              <li><span class="sw" style="background:var(--c-dark);"></span> باستا — 27%</li>
-              <li><span class="sw" style="background:var(--c-gray-300);"></span> أطباق جانبية — 15%</li>
-              <li><span class="sw" style="background:var(--c-gray-200);"></span> مشروبات — 10%</li>
-            </ul>
+        <div class="chart-card mb-3">
+          <div class="chart-head"><h4>الإيرادات — آخر 7 أيام</h4><span class="badge badge-success">+8% عن الأسبوع الماضي</span></div>
+          <div class="bar-chart">
+            <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-label">سبت</span></div>
+            <div class="bar-col"><div class="bar" style="height:68%;"></div><span class="bar-label">أحد</span></div>
+            <div class="bar-col"><div class="bar" style="height:42%;"></div><span class="bar-label">إثنين</span></div>
+            <div class="bar-col"><div class="bar" style="height:80%;"></div><span class="bar-label">ثلاثاء</span></div>
+            <div class="bar-col"><div class="bar active" style="height:95%;"></div><span class="bar-label">أربعاء</span></div>
+            <div class="bar-col"><div class="bar" style="height:73%;"></div><span class="bar-label">خميس</span></div>
+            <div class="bar-col"><div class="bar" style="height:60%;"></div><span class="bar-label">جمعة</span></div>
           </div>
         </div>
       </section>
@@ -102,7 +82,7 @@
         </div>
         <div class="card table-wrap">
           <table class="data-table">
-            <thead><tr><th>الطلب</th><th>العميل</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th><th></th></tr></thead>
+            <thead><tr><th>الطلب</th><th>العميل</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th></tr></thead>
             <tbody id="ownerOrderRows"></tbody>
           </table>
         </div>
@@ -117,17 +97,13 @@
         </div>
         <div class="card table-wrap">
           <table class="data-table">
-            <thead><tr><th>العنصر</th><th>الفئة</th><th>السعر</th><th>الحالة</th><th></th></tr></thead>
+            <thead><tr><th>العنصر</th><th>الفئة</th><th>السعر</th><th>الحالة</th></tr></thead>
             <tbody id="ownerMenuRows"></tbody>
           </table>
         </div>
       </section>
 
-      <!-- التقييمات -->
-      <section id="sec-reviews" style="display:none;">
-        <div class="dash-page-head"><div><h2>تقييمات العملاء</h2><p class="text-muted">رد على ملاحظات عملائك.</p></div></div>
-        <div class="flex-col gap-2" id="ownerReviews"></div>
-      </section>
+
 
       <!-- الإعدادات -->
       <section id="sec-settings" style="display:none;">
@@ -172,7 +148,7 @@
 <script src="assets/js/app.js"></script>
 <script>
 function showSection(name, link){
-  ['overview','orders','menu','reviews','settings'].forEach(s => FH.qs('#sec-'+s).style.display = (s===name?'block':'none'));
+  ['overview','orders','menu','settings'].forEach(s => FH.qs('#sec-'+s).style.display = (s===name?'block':'none'));
   FH.qsa('.dash-link').forEach(l => l.classList.remove('active'));
   link.classList.add('active');
   FH.qs('#sidebar').classList.remove('open');
@@ -196,7 +172,6 @@ FH.qs('#ownerOrderRows').innerHTML = mockOwnerOrders.map(o => `
   <tr>
     <td class="price">${o.id}</td><td>${o.customer}</td><td>${o.items} عناصر</td><td class="price">${FH.fmt(o.total)}</td>
     <td>${ownerStatusBadge(o.status)}</td>
-    <td><div class="table-actions"><button class="icon-btn" aria-label="عرض"><i class="fa-solid fa-eye"></i></button><button class="icon-btn" aria-label="تحديث الحالة"><i class="fa-solid fa-pen"></i></button></div></td>
   </tr>`).join('');
 
 const ownerMenu = FH_DATA.getMenu('r1').items;
@@ -205,18 +180,8 @@ FH.qs('#ownerMenuRows').innerHTML = ownerMenu.map(item => `
     <td><div class="row-item"><img class="row-thumb" src="${item.img}" alt="${item.name}"><span>${item.name}</span></div></td>
     <td>${item.tab}</td><td class="price">${FH.fmt(item.price)}</td>
     <td><span class="badge badge-success">متوفر</span></td>
-    <td><div class="table-actions"><button class="icon-btn" data-open-modal="#addItemModal" aria-label="تعديل"><i class="fa-solid fa-pen"></i></button><button class="icon-btn danger" aria-label="حذف" onclick="this.closest('tr').remove(); FH.toast('تم حذف العنصر','default','fa-trash')"><i class="fa-solid fa-trash"></i></button></div></td>
   </tr>`).join('');
 
-FH.qs('#ownerReviews').innerHTML = FH_DATA.reviews.map(rv => `
-  <div class="card card-pad">
-    <div class="flex justify-between items-start">
-      <div class="flex items-center gap-2"><div class="avatar">${rv.name.split(' ').map(n=>n[0]).join('')}</div><div><strong>${rv.name}</strong><div class="review-stars mt-1">${'<i class="fa-solid fa-star"></i>'.repeat(rv.rating)}</div></div></div>
-      <span class="text-sm text-muted">${rv.role}</span>
-    </div>
-    <p class="mt-2">"${rv.text}"</p>
-    <button class="btn btn-ghost btn-sm mt-2"><i class="fa-regular fa-comment"></i> رد</button>
-  </div>`).join('');
 
 FH.initModals();
 </script>

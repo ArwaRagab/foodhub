@@ -17,7 +17,6 @@
     <nav class="nav-links">
       <a href="index.html">الرئيسية</a>
       <a href="dashboard.html">المطاعم</a>
-      <a href="profile.html">طلباتي</a>
     </nav>
     <div class="nav-actions">
       <a href="cart.html" class="nav-cart active" aria-label="السلة"><i class="fa-solid fa-cart-shopping"></i><span class="badge-dot">0</span></a>
@@ -44,15 +43,8 @@
 
     <div class="card card-pad" id="summaryCard">
       <h3 class="mb-2">ملخص الطلب</h3>
-      <div class="coupon-row mb-2">
-        <input class="input" id="couponInput" placeholder="اكتب كود الخصم">
-        <button class="btn btn-outline" onclick="applyCoupon()">تطبيق</button>
-      </div>
-      <p class="text-sm" id="couponMsg"></p>
-
       <div class="summary-row"><span>الإجمالي الفرعي</span><span class="price" id="sumSubtotal">0.00 ج.م</span></div>
       <div class="summary-row"><span>رسوم التوصيل</span><span class="price" id="sumDelivery">0.00 ج.م</span></div>
-      <div class="summary-row"><span>الخصم</span><span class="price" id="sumDiscount">-0.00 ج.م</span></div>
       <div class="summary-row total"><span>الإجمالي</span><span class="price" id="sumTotal">0.00 ج.م</span></div>
 
       <a href="checkout.html" class="btn btn-primary btn-block btn-lg mt-3" id="checkoutBtn">إتمام الطلب <i class="fa-solid fa-arrow-left"></i></a>
@@ -64,7 +56,6 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
-let discount = 0;
 
 function renderCart(){
   const cart = FH.getCart();
@@ -96,32 +87,15 @@ function renderCart(){
 
   const subtotal = FH.cartSubtotal();
   const deliveryFee = subtotal > 0 ? 12.5 : 0;
-  const total = Math.max(subtotal + deliveryFee - discount, 0);
+  const total = Math.max(subtotal + deliveryFee, 0);
   FH.qs('#sumSubtotal').textContent = FH.fmt(subtotal);
   FH.qs('#sumDelivery').textContent = FH.fmt(deliveryFee);
-  FH.qs('#sumDiscount').textContent = '-' + FH.fmt(discount);
   FH.qs('#sumTotal').textContent = FH.fmt(total);
 
   localStorage.setItem('fh_order_total', total.toFixed(2));
 }
 
 function changeQty(id, qty){ FH.updateCartQty(id, qty); renderCart(); }
-
-function applyCoupon(){
-  const code = FH.qs('#couponInput').value.trim().toUpperCase();
-  const subtotal = FH.cartSubtotal();
-  if(code === 'WELCOME30'){
-    discount = +(subtotal * 0.3).toFixed(2);
-    FH.qs('#couponMsg').innerHTML = '<span style="color:var(--c-success); font-weight:600;"><i class="fa-solid fa-circle-check"></i> تم تطبيق خصم 30%!</span>';
-    FH.toast('تم تطبيق كود الخصم بنجاح', 'success', 'fa-tag');
-  } else if(code === ''){
-    FH.qs('#couponMsg').textContent = '';
-  } else {
-    discount = 0;
-    FH.qs('#couponMsg').innerHTML = '<span style="color:var(--c-danger); font-weight:600;"><i class="fa-solid fa-circle-xmark"></i> كود الخصم غير صحيح أو منتهي</span>';
-  }
-  renderCart();
-}
 
 renderCart();
 </script>

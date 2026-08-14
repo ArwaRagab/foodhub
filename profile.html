@@ -36,7 +36,6 @@
         <a href="#account" class="profile-menu-link active" onclick="showTab('account', this)"><i class="fa-solid fa-user"></i> البيانات الشخصية</a>
         <a href="#addresses" class="profile-menu-link" onclick="showTab('addresses', this)"><i class="fa-solid fa-location-dot"></i> العناوين المحفوظة</a>
         <a href="#orders" class="profile-menu-link" onclick="showTab('orders', this)"><i class="fa-solid fa-receipt"></i> سجل الطلبات</a>
-        <a href="#settings" class="profile-menu-link" onclick="showTab('settings', this)"><i class="fa-solid fa-gear"></i> الإعدادات</a>
         <a href="login.html" class="profile-menu-link" style="color:var(--c-danger);"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
       </div>
     </div>
@@ -47,9 +46,7 @@
         <h3 class="mb-3">البيانات الشخصية</h3>
         <div class="grid grid-2" style="gap:16px;">
           <div class="field"><label>الاسم الكامل</label><input class="input" value="أروى مصطفى"></div>
-          <div class="field"><label>البريد الإلكتروني</label><input class="input" value="arwa.mostafa@email.com"></div>
           <div class="field"><label>رقم الهاتف</label><input class="input" value="+20 100 123 4567"></div>
-          <div class="field"><label>تاريخ الميلاد</label><input class="input" type="date" value="2000-04-12"></div>
         </div>
         <button class="btn btn-primary mt-1" onclick="FH.toast('تم تحديث الملف الشخصي','success','fa-circle-check')">حفظ التغييرات</button>
       </div>
@@ -65,21 +62,12 @@
         <h3 class="mb-3">سجل الطلبات</h3>
         <div class="table-wrap">
           <table class="data-table">
-            <thead><tr><th>رقم الطلب</th><th>المطعم</th><th>التاريخ</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th><th></th></tr></thead>
+            <thead><tr><th>رقم الطلب</th><th>المطعم</th><th>التاريخ</th><th>العناصر</th><th>الإجمالي</th><th>الحالة</th></tr></thead>
             <tbody id="orderRows"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- الإعدادات -->
-      <div class="card card-pad tab-panel" id="tab-settings" style="display:none;">
-        <h3 class="mb-3">الإعدادات</h3>
-        <div class="flex justify-between items-center mb-3"><div><strong>إشعارات فورية</strong><div class="text-sm text-muted">تحديثات الطلب وحالة المندوب</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="flex justify-between items-center mb-3"><div><strong>عروض عبر البريد الإلكتروني</strong><div class="text-sm text-muted">العروض وأكواد الخصم</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="flex justify-between items-center mb-3"><div><strong>تنبيهات SMS</strong><div class="text-sm text-muted">تأكيد التوصيل عبر رسالة نصية</div></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
-        <div class="divider mb-3"></div>
-        <button class="btn btn-outline" style="border-color:var(--c-danger); color:var(--c-danger);" data-open-modal="#deleteModal">حذف الحساب</button>
-      </div>
     </div>
   </div>
 </main>
@@ -95,14 +83,7 @@
   </div>
 </div>
 
-<!-- نافذة حذف الحساب -->
-<div class="modal-overlay" id="deleteModal">
-  <div class="modal-box">
-    <div class="modal-head"><h3>حذف الحساب؟</h3><button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button></div>
-    <p class="text-muted mb-3">سيؤدي هذا إلى حذف حسابك وسجل طلباتك وعناوينك المحفوظة بشكل نهائي. لا يمكن التراجع عن هذا الإجراء.</p>
-    <div class="flex gap-2"><button class="btn btn-ghost btn-block" data-close-modal>إلغاء</button><button class="btn btn-danger btn-block">حذف الحساب</button></div>
-  </div>
-</div>
+
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
@@ -124,7 +105,6 @@ FH.qs('#orderRows').innerHTML = FH_DATA.orders.map(o => `
     <td>${o.items} عناصر</td>
     <td class="price">${FH.fmt(o.total)}</td>
     <td>${statusBadge(o.status)}</td>
-    <td><div class="table-actions"><button class="icon-btn" aria-label="إعادة الطلب"><i class="fa-solid fa-rotate-right"></i></button></div></td>
   </tr>`).join('');
 
 FH.qs('#addressList').innerHTML = FH_DATA.addresses.map(a => `
