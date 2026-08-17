@@ -142,12 +142,19 @@ const FH = (() => {
     </div>`;
   }
 
+  function logout(){
+    toast('تم تسجيل الخروج بنجاح', 'default', 'fa-right-from-bracket');
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 400);
+  }
+
   return {
     qs, qsa, fmt, toast, initNavbar, initSidebar, initModals,
     getCart, setCart, addToCart, updateCartQty, removeFromCart, clearCart,
     cartCount, cartSubtotal, updateCartBadge,
     getFavorites, toggleFavorite, isFavorite,
-    renderStars, restaurantCardHTML
+    renderStars, restaurantCardHTML, logout
   };
 })();
 
